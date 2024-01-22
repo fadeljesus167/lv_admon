@@ -1,0 +1,35 @@
+<%= form_with model: @payment do |form| %>
+    <div>
+        <%= form.label :payment_date %>
+        <%= form.date_field :payment_date %>
+    </div>
+
+    <div>
+        <%= form.label :issuing_bank %>
+        <%= form.text_field :issuing_bank %>
+    </div>
+
+    <div>
+        <%= form.label :reference %>
+        <%= form.text_field :reference %>
+    </div>
+
+    <div>
+        <%= form.label :receiving_bank %>
+        <%= form.text_field :receiving_bank %>
+    </div>
+
+    <div>
+        <%= form.label :amount %>
+        <%= form.number_field :amount, step: 0.01 %>
+    </div>
+
+    <div>
+        <%= form.label :student_id %>
+        <%= form.collection_select :student_id, Student.all.order(name: :asc), :id, :name, prompt: true %>
+    </div>
+
+    <div>
+        <%= form.submit 'Register payment' %>
+    </div>
+<% end %>

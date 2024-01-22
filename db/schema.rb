@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_22_191600) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_22_203502) do
   create_table "payments", force: :cascade do |t|
     t.date "payment_date", null: false
     t.string "issuing_bank", null: false
@@ -20,6 +20,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_191600) do
     t.boolean "verified", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "student_id", default: 1, null: false
+    t.index ["student_id"], name: "index_payments_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -29,4 +31,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_22_191600) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "payments", "students"
 end

@@ -26,8 +26,19 @@
             <td>112245546</td>
             <td>Mercantil</td>
             <td>20$</td>
-            <td><%= link_to '#', '#' %></td>
+            <td></td>
             <td><input type="checkbox"></td>
         </tr>
+        <% @student.payments.each do |payment| %>
+            <tr>
+                <td><%= payment.payment_date %></td>
+                <td><%= payment.issuing_bank %></td>
+                <td><%= payment.reference %></td>
+                <td><%= payment.receiving_bank %></td>
+                <td><%= payment.amount %>$</td>
+                <td></td>
+                <td><input type="checkbox" <%= "checked" if payment.verified %> ></td>
+            </tr>
+        <% end %>
     </tbody>
 </table>
