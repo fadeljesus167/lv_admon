@@ -1,0 +1,9 @@
+<h1>Add Student List</h1>
+
+<p>Upload a csv file that contain the students list</p>
+
+<%= form_with url: import_students_path do |form| %>
+    <%= form.file_field :students_file %>
+    
+    <%= form.submit 'Upload' %>
+<% end %>

@@ -1,0 +1,14 @@
+<h1>Students List</h1>
+<ul>
+    <li><%= link_to 'New Student', new_student_path %></li>
+</ul>
+
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Grade</th>
+    </thead>
+    <tbody>
+        <%= render partial: 'student', collection: @students %>
+    </tbody>
+</table>
