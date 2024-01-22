@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_22_154420) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_22_191600) do
+  create_table "payments", force: :cascade do |t|
+    t.date "payment_date", null: false
+    t.string "issuing_bank", null: false
+    t.string "reference", null: false
+    t.string "receiving_bank", null: false
+    t.decimal "amount", precision: 15, scale: 2, null: false
+    t.boolean "verified", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name", null: false
     t.string "grade", null: false

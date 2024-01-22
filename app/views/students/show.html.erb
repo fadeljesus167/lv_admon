@@ -1,0 +1,33 @@
+<h1><%= @student.name %></h1>
+<div>
+    <p>
+        <strong>Grade: </strong> <%= @student.grade %><br>
+        <strong>Birthday: </strong>1/1/2000<br>
+        <strong>Start date: </strong>1/1/2000<br>
+        <strong>Quota: </strong> 2$<br>
+    </p>
+</div>
+
+<h2>Payments</h2>
+<table>
+    <thead>
+        <th>Date</th>
+        <th>Issuing Bank</th>
+        <th>Reference</th>
+        <th>Receiving Bank</th>
+        <th>Amount</th>
+        <th>Payment Support</th>
+        <th>Verified</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1/1/2000</td>
+            <td>Mercantil</td>
+            <td>112245546</td>
+            <td>Mercantil</td>
+            <td>20$</td>
+            <td><%= link_to '#', '#' %></td>
+            <td><input type="checkbox"></td>
+        </tr>
+    </tbody>
+</table>

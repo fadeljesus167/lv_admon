@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  payment_date: 2024-01-22
+  issuing_bank: MyString
+  reference: MyString
+  receiving_bank: MyString
+  amount: 9.99
+  verified: false
+
+two:
+  payment_date: 2024-01-22
+  issuing_bank: MyString
+  reference: MyString
+  receiving_bank: MyString
+  amount: 9.99
+  verified: false
