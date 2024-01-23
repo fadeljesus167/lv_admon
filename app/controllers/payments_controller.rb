@@ -17,8 +17,16 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def verify
+    @payment = Payment.find(params[:id])
+
+    @payment.update(verified: !@payment.verified)
+
+    pp @payment
+  end
+
   private
   def payment_params
-    params.require(:payment).permit(:payment_date, :issuing_bank, :reference, :receiving_bank, :amount, :student_id)
+    params.require(:payment).permit(:payment_date, :issuing_bank, :reference, :receiving_bank, :amount, :payment_support, :student_id)
   end
 end

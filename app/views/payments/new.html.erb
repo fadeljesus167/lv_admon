@@ -25,6 +25,11 @@
     </div>
 
     <div>
+        <%= form.label :payment_support %>
+        <%= form.file_field :payment_support %>
+    </div>
+
+    <div>
         <%= form.label :student_id %>
         <%= form.collection_select :student_id, Student.all.order(name: :asc), :id, :name, prompt: true %>
     </div>

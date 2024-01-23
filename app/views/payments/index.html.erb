@@ -1,5 +1,19 @@
 <h1>Payments List</h1>
-
 <ul>
     <li><%= link_to 'New payment', new_payment_path %></li>
 </ul>
+
+<table>
+    <thead>
+        <th>Date</th>
+        <th>Issuing Bank</th>
+        <th>Reference</th>
+        <th>Receiving Bank</th>
+        <th>Amount</th>
+        <th>Payment Support</th>
+        <th>Verified</th>
+    </thead>
+    <tbody>
+        <%= render partial: 'payment', collection: @payments %>
+    </tbody>
+</table>
