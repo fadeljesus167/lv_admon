@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "payments_table", partial: "payments/payment", locals: { payment: @payment } %>
+<%= turbo_stream.update "new_payment", ""%>

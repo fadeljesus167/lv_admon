@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   def index
-    @payments = Payment.all
+    @payments = Payment.all.order(created_at: :desc).with_attached_payment_support
   end
 
   def new
@@ -11,18 +11,24 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
 
     if @payment.save
-      redirect_to payments_path
+      respond_to do |format|
+        format.html { redirect_to payments_path }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
   end
 
+  def verification
+    @payments = Payment.where(verified: false).order(created_at: :desc).with_attached_payment_support
+  end
+
   def verify
-    @payment = Payment.find(params[:id])
+    @payment = Payment.find_by(id: params[:id])
+    @payment.update(verified: true)
 
-    @payment.update(verified: !@payment.verified)
-
-    pp @payment
+    redirect_to payments_path
   end
 
   private

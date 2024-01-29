@@ -1,7 +1,10 @@
 <h1>Payments List</h1>
 <ul>
-    <li><%= link_to 'New payment', new_payment_path %></li>
+    <li><%= link_to 'New payment', new_payment_path, data: { turbo_frame: 'new_payment' } %></li>
+    <li><%= link_to 'Verify', payments_verify_path %></li>
 </ul>
+
+<%= turbo_frame_tag "new_payment" %>
 
 <table>
     <thead>
@@ -13,7 +16,7 @@
         <th>Payment Support</th>
         <th>Verified</th>
     </thead>
-    <tbody>
+    <tbody id="payments_table">
         <%= render partial: 'payment', collection: @payments %>
     </tbody>
 </table>
