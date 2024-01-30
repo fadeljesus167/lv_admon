@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_23_125819) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_30_154150) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_23_125819) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "bills", force: :cascade do |t|
+    t.integer "payment_id", default: 1, null: false
+    t.integer "status", default: 0, null: false
+    t.boolean "delivered", default: false, null: false
+    t.date "bill_date", null: false
+    t.date "delivered_date"
+    t.string "bill_reference", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_id"], name: "index_bills_on_payment_id"
+  end
+
   create_table "payments", force: :cascade do |t|
     t.date "payment_date", null: false
     t.string "issuing_bank", null: false
@@ -61,5 +73,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_23_125819) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bills", "payments"
   add_foreign_key "payments", "students"
 end

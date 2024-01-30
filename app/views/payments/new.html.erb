@@ -7,17 +7,17 @@
 
         <div>
             <%= form.label :issuing_bank %>
-            <%= form.text_field :issuing_bank %>
+            <%= form.select :issuing_bank, issuing_banks %>
+        </div>
+
+        <div>
+            <%= form.label :receiving_bank %>
+            <%= form.select :receiving_bank, receiving_banks %>
         </div>
 
         <div>
             <%= form.label :reference %>
             <%= form.text_field :reference %>
-        </div>
-
-        <div>
-            <%= form.label :receiving_bank %>
-            <%= form.text_field :receiving_bank %>
         </div>
 
         <div>

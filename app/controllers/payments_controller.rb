@@ -20,17 +20,6 @@ class PaymentsController < ApplicationController
     end
   end
 
-  def verification
-    @payments = Payment.where(verified: false).order(created_at: :desc).with_attached_payment_support
-  end
-
-  def verify
-    @payment = Payment.find_by(id: params[:id])
-    @payment.update(verified: true)
-
-    redirect_to payments_path
-  end
-
   private
   def payment_params
     params.require(:payment).permit(:payment_date, :issuing_bank, :reference, :receiving_bank, :amount, :payment_support, :student_id)

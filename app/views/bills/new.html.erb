@@ -1,0 +1,14 @@
+<table>
+  <thead>
+      <th>Date</th>
+      <th>Issuing Bank</th>
+      <th>Reference</th>
+      <th>Receiving Bank</th>
+      <th>Amount</th>
+      <th>Payment Support</th>
+      <th>Verified</th>
+  </thead>
+  <tbody id="payments_table">
+      <%= render partial: 'payments/payment', collection: @payments %>
+  </tbody>
+</table>
