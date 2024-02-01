@@ -1,0 +1,25 @@
+<%= form_with model: @bill do |form| %>
+    <div>
+        <%= form.label :payment_id %>
+        <%= form.text_field :payment_id, { value: @payment.id } %>
+    </div>
+
+    <div>
+        <%= form.label :bill_date %>
+        <%= form.date_field :bill_date %>
+    </div>
+
+    <div>
+        <%= form.label :delivered_date %>
+        <%= form.date_field :delivered_date %>
+    </div>
+
+    <div>
+        <%= form.label :bill_reference %>
+        <%= form.text_field :bill_reference %>
+    </div>
+
+    <div>
+        <%= form.submit 'Register bill' %>
+    </div>
+<% end %>

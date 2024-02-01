@@ -11,4 +11,16 @@
     <th>Bill Date</th>
     <th>Bill Reference</th>
   </thead>
+  <tbody>
+    <% @bills.each do |bill| %>
+      <tr>
+        <td><%= bill.payment.reference %></td>
+        <td><%= bill.status %></td>
+        <td><%= bill.delivered %></td>
+        <td><%= bill.delivered_date %></td>
+        <td><%= bill.bill_date %></td>
+        <td><%= bill.bill_reference %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
