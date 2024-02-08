@@ -20,6 +20,7 @@
         <td><%= bill.delivered_date %></td>
         <td><%= bill.bill_date %></td>
         <td><%= bill.bill_reference %></td>
+        <td><%= link_to "Modify", bill_path(bill) %></td>
       </tr>
     <% end %>
   </tbody>

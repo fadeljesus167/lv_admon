@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'bills/index', as: :bills
   post 'bills/index', to: 'bills#create'
   get 'bills/new', as: :new_bill
-  get 'bills/show', as: :bill
+  get 'bills/show/:id', to: 'bills#show', as: :bill
   get 'bills/new/:id', to: 'bills#generate', as: :generate_bill
 
   resources :students

@@ -1,2 +1,30 @@
-<h1>Bills#show</h1>
-<p>Find me in app/views/bills/show.html.erb</p>
+<%= form_with model: @bill do |form| %>
+    <div>
+        <%= form.label :payment_id %>
+        <%= form.text_field :payment_id, { value: @bill.payment.id } %>
+    </div>
+
+    <div>
+        <%= form.label :bill_date %>
+        <%= form.date_field :bill_date %>
+    </div>
+
+    <div>
+        <%= form.label :delivered_date %>
+        <%= form.date_field :delivered_date %>
+    </div>
+
+    <div>
+        <%= form.label :bill_reference %>
+        <%= form.text_field :bill_reference %>
+    </div>
+
+    <div>
+        <%= form.label :status %>
+        <%= form.select :status, Bill.statuses %>
+    </div>
+
+    <div>
+        <%= form.submit 'update' %>
+    </div>
+<% end %>

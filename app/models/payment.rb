@@ -8,4 +8,5 @@ class Payment < ApplicationRecord
   has_one_attached :payment_support
 
   belongs_to :student
+  has_one :bill
 end
