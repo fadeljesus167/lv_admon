@@ -21,7 +21,7 @@
 
     <div>
         <%= form.label :status %>
-        <%= form.select :status, Bill.statuses %>
+        <%= form.select :status, [['Processing', :processing],['Canceled', :canceled],['Completed', :completed]] %>
     </div>
 
     <div>

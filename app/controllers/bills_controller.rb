@@ -20,8 +20,18 @@ class BillsController < ApplicationController
     @bill = Bill.find(params[:id])
   end
 
+  def update
+    @bill = Bill.find(params[:id])
+
+    if @bill.update(bill_params)
+      redirect_to bills_path
+    else
+      render :show
+    end
+  end
+
   private
   def bill_params
-    params.require(:bill).permit(:payment_id, :bill_date, :delivered_date, :bill_reference)
+    params.require(:bill).permit(:payment_id, :bill_date, :delivered_date, :bill_reference, :status)
   end
 end

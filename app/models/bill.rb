@@ -2,7 +2,7 @@ class Bill < ApplicationRecord
   validates :bill_date, presence: true
   validates :bill_reference, presence: true
 
-  enum status: %i( processing canceled completed )
+  enum status: { processing: 0, canceled: 1, completed: 2 }
 
   belongs_to :payment
 end
