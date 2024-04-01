@@ -10,5 +10,6 @@ class CreatePayments < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+    add_index :payments, :reference, unique: true
   end
 end

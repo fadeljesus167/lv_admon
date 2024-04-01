@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_185748) do
     t.string "bill_reference", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bill_reference"], name: "index_bills_on_bill_reference", unique: true
     t.index ["payment_id"], name: "index_bills_on_payment_id"
   end
 
@@ -61,6 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_185748) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "student_id", default: 1, null: false
+    t.index ["reference"], name: "index_payments_on_reference", unique: true
     t.index ["student_id"], name: "index_payments_on_student_id"
   end
 

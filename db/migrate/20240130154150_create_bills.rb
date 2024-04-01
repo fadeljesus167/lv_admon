@@ -10,5 +10,6 @@ class CreateBills < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+    add_index :bills, :bill_reference, unique: true
   end
 end

@@ -8,7 +8,11 @@ class BillsController < ApplicationController
   end
 
   def create
-    Bill.create(bill_params)
+    @bill = Bill.new(bill_params)
+
+    if @bill.save
+      redirect_to bills_path
+    end
   end
 
   def generate
