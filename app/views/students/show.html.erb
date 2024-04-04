@@ -21,7 +21,7 @@
         <th>Bill Status</th>
     </thead>
     <tbody>
-        <% @student.payments.each do |payment| %>
+        <% @payments.each do |payment| %>
             <tr>
                 <td><%= payment.payment_date %></td>
                 <td><%= payment.issuing_bank %></td>
@@ -30,7 +30,7 @@
                 <td><%= payment.amount %> Bs.S</td>
                 <td><%= image_tag payment.payment_support, width: 100, height: 100 if payment.payment_support.attached? %></td>
                 <td><input type="checkbox" disabled <%= "checked" if payment.verified %> ></td>
-                <td><%= payment.bill.status %></td>
+                <td><%= payment.bill.status if payment.bill %></td>
             </tr>
         <% end %>
     </tbody>

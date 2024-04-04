@@ -4,7 +4,9 @@ class BillsController < ApplicationController
   end
 
   def new
-    @payments = Payment.where(verified: true).order(created_at: :desc)
+    billed_payments = []
+    Bill.all.includes(:payment).each { |bill| billed_payments << bill.payment }
+    @payments = Payment.excluding(billed_payments)
   end
 
   def create

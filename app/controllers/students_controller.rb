@@ -2,11 +2,12 @@ require 'csv'
 
 class StudentsController < ApplicationController
   def index
-    @students = Student.all
+    @students = Student.all.order(name: :asc)
   end
 
   def show
-    @student = Student.includes(:bills).find(params[:id])
+    @student = Student.includes(:payments).find(params[:id])
+    @payments = @student.payments.with_attached_payment_support.includes(:bill)
   end
 
   def new
