@@ -1,23 +1,36 @@
-<%= form_with model: @bill do |form| %>
+<h3><%= @student.name %></h3>
+<%= form_with model: @fee do |form| %>
     <div>
-        <%= form.label :payment_id %>
-        <%= form.text_field :payment_id, { value: @payment.id } %>
+        <%= form.label :student %>
+        <%= form.text_field :student, value: @student.id %>
     </div>
 
-    <div>
-        <%= form.label :bill_date %>
-        <%= form.date_field :bill_date %>
-    </div>
+    <%= form.fields_for :bills do |form_bill| %>
+        <div>
+            <%= form.label :payment_id %>
+            <%= form.text_field :payment_id, { value: @payment.id } %>
+        </div>
 
-    <div>
-        <%= form.label :delivered_date %>
-        <%= form.date_field :delivered_date %>
-    </div>
+        <div>
+            <%= form.label :bill_date %>
+            <%= form.date_field :bill_date %>
+        </div>
 
-    <div>
-        <%= form.label :bill_reference %>
-        <%= form.text_field :bill_reference %>
-    </div>
+        <div>
+            <%= form.label :delivered_date %>
+            <%= form.date_field :delivered_date %>
+        </div>
+
+        <div>
+            <%= form.label :bill_reference %>
+            <%= form.text_field :bill_reference %>
+        </div>
+
+        <div>
+            <%= form.label :bill_description %>
+            <%= form.text_field :bill_description %>
+        </div>
+    <% end %>
 
     <div>
         <%= form.submit 'Register bill' %>

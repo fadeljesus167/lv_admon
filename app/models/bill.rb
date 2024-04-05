@@ -4,5 +4,6 @@ class Bill < ApplicationRecord
 
   enum status: { processing: 0, canceled: 1, completed: 2 }
   
+  belongs_to :fee
   belongs_to :payment
 end

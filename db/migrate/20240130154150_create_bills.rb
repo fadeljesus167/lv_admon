@@ -7,6 +7,7 @@ class CreateBills < ActiveRecord::Migration[7.1]
       t.date :bill_date, null: false
       t.date :delivered_date
       t.string :bill_reference, null: false
+      t.string :bill_description, null: false
 
       t.timestamps
     end

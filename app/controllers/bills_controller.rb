@@ -6,7 +6,7 @@ class BillsController < ApplicationController
   def new
     billed_payments = []
     Bill.all.includes(:payment).each { |bill| billed_payments << bill.payment }
-    @payments = Payment.excluding(billed_payments)
+    @payments = Payment.where(verified: true).excluding(billed_payments)
   end
 
   def create
@@ -18,8 +18,10 @@ class BillsController < ApplicationController
   end
 
   def generate
-    @bill = Bill.new
     @payment = Payment.find(params[:id])
+    @student = @payment.student
+    @fee = Fee.new
+    @fee.bills.build
   end
 
   def show
@@ -38,6 +40,6 @@ class BillsController < ApplicationController
 
   private
   def bill_params
-    params.require(:bill).permit(:payment_id, :bill_date, :delivered_date, :bill_reference, :status)
+    params.require(:bill).permit(:payment_id, :bill_date, :delivered_date, :bill_reference, :status, :bill_description)
   end
 end

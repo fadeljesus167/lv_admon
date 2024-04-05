@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_14_185748) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_05_205122) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -46,10 +46,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_185748) do
     t.date "bill_date", null: false
     t.date "delivered_date"
     t.string "bill_reference", null: false
+    t.string "bill_description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "fee_id", null: false
     t.index ["bill_reference"], name: "index_bills_on_bill_reference", unique: true
+    t.index ["fee_id"], name: "index_bills_on_fee_id"
     t.index ["payment_id"], name: "index_bills_on_payment_id"
+  end
+
+  create_table "fees", force: :cascade do |t|
+    t.integer "student_id", null: false
+    t.integer "bill_id", null: false
+    t.integer "month", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_fees_on_bill_id"
+    t.index ["student_id"], name: "index_fees_on_student_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -82,6 +95,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_185748) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bills", "fees"
   add_foreign_key "bills", "payments"
+  add_foreign_key "fees", "bills"
+  add_foreign_key "fees", "students"
   add_foreign_key "payments", "students"
 end
