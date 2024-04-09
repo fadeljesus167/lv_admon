@@ -1,36 +1,41 @@
 <h3><%= @student.name %></h3>
 <%= form_with model: @fee do |form| %>
     <div>
-        <%= form.label :student %>
-        <%= form.text_field :student, value: @student.id %>
+        <%= form.label :student_id %>
+        <%= form.text_field :student_id, value: @student.id %>
     </div>
 
-    <%= form.fields_for :bills do |form_bill| %>
+    <%= form.fields_for :bills, include_id: false do |form_bill| %>
         <div>
-            <%= form.label :payment_id %>
-            <%= form.text_field :payment_id, { value: @payment.id } %>
+            <%= form_bill.label :payment_id %>
+            <%= form_bill.text_field :payment_id, { value: @payment.id } %>
         </div>
 
         <div>
-            <%= form.label :bill_date %>
-            <%= form.date_field :bill_date %>
+            <%= form_bill.label :bill_date %>
+            <%= form_bill.date_field :bill_date %>
         </div>
 
         <div>
-            <%= form.label :delivered_date %>
-            <%= form.date_field :delivered_date %>
+            <%= form_bill.label :delivered_date %>
+            <%= form_bill.date_field :delivered_date %>
         </div>
 
         <div>
-            <%= form.label :bill_reference %>
-            <%= form.text_field :bill_reference %>
+            <%= form_bill.label :bill_reference %>
+            <%= form_bill.text_field :bill_reference %>
         </div>
 
         <div>
-            <%= form.label :bill_description %>
-            <%= form.text_field :bill_description %>
+            <%= form_bill.label :bill_description %>
+            <%= form_bill.text_field :bill_description %>
         </div>
     <% end %>
+
+    <div>
+        <%= form.label :month %>
+        <%= form.select :month, Fee.months.keys.map { |key| [key.to_s, key] } %>
+    </div>
 
     <div>
         <%= form.submit 'Register bill' %>
