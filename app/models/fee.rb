@@ -17,6 +17,4 @@ class Fee < ApplicationRecord
 
   belongs_to :student
   has_many :bills
-
-  accepts_nested_attributes_for :bills, reject_if: :all_blank
 end

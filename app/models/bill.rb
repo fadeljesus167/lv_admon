@@ -3,7 +3,9 @@ class Bill < ApplicationRecord
   validates :bill_reference, presence: true, uniqueness: true
 
   enum status: { processing: 0, canceled: 1, completed: 2 }
-  
+
   belongs_to :fee
   belongs_to :payment
+
+  accepts_nested_attributes_for :fee, reject_if: :all_blank
 end

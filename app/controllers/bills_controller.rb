@@ -20,8 +20,8 @@ class BillsController < ApplicationController
   def generate
     @payment = Payment.find(params[:id])
     @student = @payment.student
-    @fee = Fee.new
-    @fee.bills.build
+    @bill = Bill.new
+    @bill.fee = Fee.new
   end
 
   def show
@@ -40,6 +40,6 @@ class BillsController < ApplicationController
 
   private
   def bill_params
-    params.require(:bill).permit(:payment_id, :bill_date, :delivered_date, :bill_reference, :status, :bill_description)
+    params.require(:bill).permit(:payment_id, :bill_date, :delivered_date, :bill_reference, :status, :bill_description, fee_attributes: [:student_id, :month])
   end
 end

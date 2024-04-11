@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :fees
   resources :students
-  
+
   get '/students/new/import', to: 'students#import_students', as: 'import_students'
   post '/students/new/import', to: 'students#create_csv'
   get '/verifications/payments', to: 'verifications#verification', as: 'payments_verify'

@@ -1,41 +1,41 @@
 <h3><%= @student.name %></h3>
-<%= form_with model: @fee do |form| %>
+<%= form_with model: @bill, url: bills_path  do |form| %>
     <div>
-        <%= form.label :student_id %>
-        <%= form.text_field :student_id, value: @student.id %>
+        <%= form.label :payment_id %>
+        <%= form.text_field :payment_id, { value: @payment.id } %>
     </div>
 
-    <%= form.fields_for :bills, include_id: false do |form_bill| %>
-        <div>
-            <%= form_bill.label :payment_id %>
-            <%= form_bill.text_field :payment_id, { value: @payment.id } %>
-        </div>
+    <div>
+        <%= form.label :bill_date %>
+        <%= form.date_field :bill_date %>
+    </div>
 
-        <div>
-            <%= form_bill.label :bill_date %>
-            <%= form_bill.date_field :bill_date %>
-        </div>
+    <div>
+        <%= form.label :delivered_date %>
+        <%= form.date_field :delivered_date %>
+    </div>
 
-        <div>
-            <%= form_bill.label :delivered_date %>
-            <%= form_bill.date_field :delivered_date %>
-        </div>
+    <div>
+        <%= form.label :bill_reference %>
+        <%= form.text_field :bill_reference %>
+    </div>
 
-        <div>
-            <%= form_bill.label :bill_reference %>
-            <%= form_bill.text_field :bill_reference %>
-        </div>
+    <div>
+        <%= form.label :bill_description %>
+        <%= form.text_field :bill_description %>
+    </div>
 
+    <%= form.fields_for :fee, include_id: false do |form_fee| %>
         <div>
-            <%= form_bill.label :bill_description %>
-            <%= form_bill.text_field :bill_description %>
+            <%= form_fee.label :student_id %>
+            <%= form_fee.text_field :student_id, value: @student.id %>
+        </div>
+        
+        <div>
+            <%= form_fee.label :month %>
+            <%= form_fee.select :month, Fee.months.keys.map { |key| [key.to_s, key] } %>
         </div>
     <% end %>
-
-    <div>
-        <%= form.label :month %>
-        <%= form.select :month, Fee.months.keys.map { |key| [key.to_s, key] } %>
-    </div>
 
     <div>
         <%= form.submit 'Register bill' %>
