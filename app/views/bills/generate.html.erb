@@ -25,6 +25,11 @@
         <%= form.text_field :bill_description %>
     </div>
 
+    <div>
+        <%= form.label :bill_type %>
+        <%= form.select :bill_type, Bill.bill_types.keys.map { |key| [key.to_s, key] } %>
+    </div>
+
     <%= form.fields_for :fee, include_id: false do |form_fee| %>
         <div>
             <%= form_fee.label :student_id %>

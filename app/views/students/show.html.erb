@@ -32,7 +32,7 @@
                 <td><%= image_tag payment.payment_support, width: 100, height: 100 if payment.payment_support.attached? %></td>
                 <td><input type="checkbox" disabled <%= "checked" if payment.verified %> ></td>
                 <td><%= payment.bill.status if payment.bill %></td>
-                <td><%= payment.bill.fee.month %></td>
+                <td><%= payment.bill.fee.month if payment.bill %></td>
             </tr>
         <% end %>
     </tbody>
