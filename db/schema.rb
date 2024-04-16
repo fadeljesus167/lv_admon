@@ -42,11 +42,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_134025) do
   create_table "bills", force: :cascade do |t|
     t.integer "payment_id", default: 1, null: false
     t.integer "status", default: 0, null: false
-    t.boolean "delivered", default: false, null: false
     t.date "bill_date", null: false
     t.date "delivered_date"
     t.string "bill_reference", null: false
     t.string "bill_description", null: false
+    t.integer "bill_type", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "fee_id", null: false
