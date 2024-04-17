@@ -6,7 +6,7 @@
 
     <div>
         <%= form.label :grade %>
-        <%= form.text_field :grade %>
+        <%= form.select :grade, Student.grades %>
     </div>
 
     <%= form.submit %>
