@@ -4,6 +4,6 @@ module PaymentsHelper
   end
 
   def receiving_banks
-    ["0108 - Provincial", "0105 - Mercantil"]
+    ["0105 - Mercantil","0108 - Provincial"]
   end
 end

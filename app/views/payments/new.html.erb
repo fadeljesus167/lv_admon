@@ -6,13 +6,13 @@
         </div>
 
         <div>
-            <%= form.label :school_term %>
-            <%= form.select :school_term, SchoolTerm.all.collect { |st| ["#{st.start_date.year}-#{st.end_date.year}", st.id] } %>
+            <%= form.label :school_term_id %>
+            <%= form.select :school_term_id, SchoolTerm.all.collect { |st| ["#{st.start_date.year}-#{st.end_date.year}", st.id] } %>
         </div>
 
         <div>
             <%= form.label :payment_type %>
-            <%= form.select :payment_type, Payment.payment_types %>
+            <%= form.select :payment_type, Payment.payment_types.keys.map { |key| [key.to_s, key] } %>
         </div>
 
         <div>
