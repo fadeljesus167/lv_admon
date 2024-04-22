@@ -6,6 +6,16 @@
         </div>
 
         <div>
+            <%= form.label :school_term %>
+            <%= form.select :school_term, SchoolTerm.all.collect { |st| ["#{st.start_date.year}-#{st.end_date.year}", st.id] } %>
+        </div>
+
+        <div>
+            <%= form.label :payment_type %>
+            <%= form.select :payment_type, Payment.payment_types %>
+        </div>
+
+        <div>
             <%= form.label :issuing_bank %>
             <%= form.select :issuing_bank, issuing_banks %>
         </div>
@@ -23,6 +33,11 @@
         <div>
             <%= form.label :amount %>
             <%= form.number_field :amount, step: 0.01 %>
+        </div>
+
+        <div>
+            <%= form.label :rate %>
+            <%= form.number_field :rate, step: 0.01 %>
         </div>
 
         <div>

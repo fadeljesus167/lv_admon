@@ -9,4 +9,10 @@ class Payment < ApplicationRecord
 
   belongs_to :student
   has_one :bill
+
+  enum payment_type: {
+    transf: 0,
+    cash: 1,
+    zelle: 2
+  }
 end

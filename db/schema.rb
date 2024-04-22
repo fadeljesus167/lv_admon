@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_05_134025) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_22_135535) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -69,17 +69,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_134025) do
     t.string "reference", null: false
     t.string "receiving_bank", null: false
     t.decimal "amount", precision: 15, scale: 2, null: false
+    t.decimal "rate", precision: 7, scale: 2, null: false
     t.boolean "verified", default: false
+    t.integer "payment_type", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "student_id", default: 1, null: false
+    t.integer "school_term_id", null: false
     t.index ["reference"], name: "index_payments_on_reference", unique: true
+    t.index ["school_term_id"], name: "index_payments_on_school_term_id"
     t.index ["student_id"], name: "index_payments_on_student_id"
+  end
+
+  create_table "school_terms", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|
     t.string "name", null: false
     t.string "grade", null: false
+    t.integer "quota"
+    t.date "entry_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,5 +109,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_05_134025) do
   add_foreign_key "bills", "fees"
   add_foreign_key "bills", "payments"
   add_foreign_key "fees", "students"
+  add_foreign_key "payments", "school_terms"
   add_foreign_key "payments", "students"
 end

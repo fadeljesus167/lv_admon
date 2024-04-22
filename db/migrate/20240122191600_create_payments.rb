@@ -6,8 +6,10 @@ class CreatePayments < ActiveRecord::Migration[7.1]
       t.string :reference, null: false
       t.string :receiving_bank, null: false
       t.decimal :amount, null: false, precision: 15, scale: 2
+      t.decimal :rate, null: false, precision: 7, scale: 2
       t.boolean :verified, default: false
-
+      t.integer :payment_type, null: false, default: 0
+      
       t.timestamps
     end
     add_index :payments, :reference, unique: true
