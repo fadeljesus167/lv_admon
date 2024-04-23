@@ -22,6 +22,6 @@ class PaymentsController < ApplicationController
 
   private
   def payment_params
-    params.require(:payment).permit(:payment_date, :school_term_id, :payment_type, :issuing_bank, :reference, :receiving_bank, :amount, :rate, :payment_support, :student_id)
+    params.require(:payment).permit(:payment_date, :school_term_id, :payment_type, :issuing_bank, :reference, :receiving_bank, :amount, :payment_support, :rate, :student_id)
   end
 end
