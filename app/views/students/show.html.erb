@@ -12,6 +12,15 @@
     </ul>
 </div>
 
+<h2>Debts</h2>
+<div>
+    <ol>
+        <% (Fee.months.keys - @student.fees.pluck(:month)).each do |debt| %>
+            <li>Has a debt for <%= debt %></li>
+        <% end %>
+    </ol>
+</div>
+
 <h2>Payments</h2>
 <table>
     <thead>
