@@ -61,5 +61,5 @@ end
 
 private
 def student_params
-  params.require(:student).permit(:name, :grade)
+  params.require(:student).permit(:name, :grade, :quota, :entry_date)
 end

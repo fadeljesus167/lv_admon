@@ -9,5 +9,15 @@
         <%= form.select :grade, Student.grades %>
     </div>
 
+    <div>
+        <%= form.label :quota %>
+        <%= form.number_field :quota %>
+    </div>
+
+    <div>
+        <%= form.label :entry_date %>
+        <%= form.date_field :entry_date %>
+    </div>
+
     <%= form.submit %>
 <% end %>
