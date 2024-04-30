@@ -1,23 +1,23 @@
 <%= form_with model: @student do |form| %>
-    <div>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
+    <div class="mb-3 px-3">
+        <%= form.label :name, class: 'form-label' %>
+        <%= form.text_field :name, class: 'form-control' %>
     </div>
 
-    <div>
-        <%= form.label :grade %>
-        <%= form.select :grade, Student.grades %>
+    <div class="mb-3 px-3">
+        <%= form.label :grade, class: 'form-label' %>
+        <%= form.select :grade, Student.grades, {} ,class: 'form-select' %>
     </div>
 
-    <div>
-        <%= form.label :quota %>
-        <%= form.number_field :quota %>
+    <div class="mb-3 px-3">
+        <%= form.label :quota, class: 'form-label' %>
+        <%= form.number_field :quota, class: 'form-control' %>
     </div>
 
-    <div>
-        <%= form.label :entry_date %>
-        <%= form.date_field :entry_date %>
+    <div class="mb-3 px-3">
+        <%= form.label :entry_date, class: 'form-label' %>
+        <%= form.date_field :entry_date, class: 'form-control' %>
     </div>
 
-    <%= form.submit %>
+    <%= form.submit 'Create', class: 'btn btn-success' %>
 <% end %>

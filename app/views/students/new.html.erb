@@ -1,6 +1,6 @@
-<h1>New Student</h1>
-<ul>
-    <li><%= link_to 'Import Students List', import_students_path %></li>
-</ul>
+<div class="container d-flex justify-content-between align-items-center py-2">
+    <h1>New Student</h1>
+    <%= link_to 'Import Students List', import_students_path, class: 'btn btn-primary' %>
+</div>
 
 <%= render 'form' %>
