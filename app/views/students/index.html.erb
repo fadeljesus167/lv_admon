@@ -1,6 +1,9 @@
 <div class="container d-flex justify-content-between align-items-center py-2">
     <h1>Students List</h1>
-    <%= link_to 'New Student', new_student_path, class: 'btn btn-primary' %>
+    <span class="btn-group">
+        <%= link_to 'New Student', new_student_path, class: 'btn btn-primary' %>
+        <%= link_to 'Import Students List', import_students_path, class: 'btn btn-success' %>
+    </span>
 </div>
 
 <table class="table table-hover">

@@ -1,52 +1,73 @@
-<h1><%= @student.name %></h1>
-<div>
-    <p>
-        <strong>Grade: </strong> <%= @student.grade %><br>
-        <strong>Birthday: </strong>1/1/2000<br>
-        <strong>Start date: </strong>1/1/2000<br>
-        <strong>Quota: </strong> 2$<br>
-    </p>
-    <ul>
-        <li><%= link_to 'Edit', edit_student_path(@student) %></li>
-        <li><%= link_to 'Delete', student_path(@student), data: { turbo_method: :delete, turbo_confirm: 'Sure?' } %></li>
-    </ul>
+<div class="container d-flex justify-content-between align-items-center py-2">
+    <h1><%= @student.name %></h1>
+    <h1>Debts</h1>
+    <span class="btn btn-group">
+        <%= link_to 'Edit', edit_student_path(@student), class: 'btn btn-warning' %>
+        <%= link_to 'Delete', student_path(@student), data: { turbo_method: :delete, turbo_confirm: 'Sure?' }, class: 'btn btn-danger' %>
+    </span>
 </div>
+<section class="row">
+    <main class="col">
+        <article class="card h-100">
+            <p class="card-body">
+                <strong>Grade: </strong> <%= @student.grade %><br>
+                <strong>Birthday: </strong>1/1/2000<br>
+                <strong>Start date: </strong>1/1/2000<br>
+                <strong>Quota: </strong> 2$<br>
+            </p>
+        </article>
+    </main>
 
-<h2>Debts</h2>
-<div>
-    <ol>
-        <% (Fee.months.keys - @student.fees.pluck(:month)).each do |debt| %>
-            <li>Has a debt for <%= debt %></li>
-        <% end %>
-    </ol>
-</div>
+    <aside class="col-7">
+        <article class="card h-100">
+            <div class="card-body">
+                <div class="row row-cols-4">
+                    <% Fee.months.keys.each do |key| %>
+                        <div class="col">
+                            <% if @paid_months.include?(key) %>
+                                <div class="card w-75 mx-auto mb-1 py-1 bg-success">
+                                    <span class="card-text text-center"><%= key %></span>
+                            <% else %>
+                                <div class="card w-75 mx-auto mb-1 py-1 bg-danger">
+                                    <span class="card-text text-center bg-danger"><%= key %></span>
+                            <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </article>
+    </aside>
+</section>
 
-<h2>Payments</h2>
-<table class="table table-hover">
-    <thead>
-        <th>Date</th>
-        <th>Issuing Bank</th>
-        <th>Reference</th>
-        <th>Receiving Bank</th>
-        <th>Amount</th>
-        <th>Payment Support</th>
-        <th>Verified</th>
-        <th>Bill Status</th>
-        <th>Fee Month</th>
-    </thead>
-    <tbody>
-        <% @payments.each do |payment| %>
-            <tr>
-                <td><%= payment.payment_date %></td>
-                <td><%= payment.issuing_bank %></td>
-                <td><%= payment.reference %></td>
-                <td><%= payment.receiving_bank %></td>
-                <td><%= payment.amount %> Bs.S</td>
-                <td><%= image_tag payment.payment_support, width: 100, height: 100 if payment.payment_support.attached? %></td>
-                <td><input type="checkbox" disabled <%= "checked" if payment.verified %> ></td>
-                <td><%= payment.bill.status if payment.bill %></td>
-                <td><%= payment.bill.fee.month if payment.bill %></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+<section class="mt-3">
+    <h2>Payments</h2>
+    <table class="table table-hover">
+        <thead>
+            <th>Date</th>
+            <th>Issuing Bank</th>
+            <th>Reference</th>
+            <th>Receiving Bank</th>
+            <th>Amount</th>
+            <th>Payment Support</th>
+            <th>Verified</th>
+            <th>Bill Status</th>
+            <th>Fee Month</th>
+        </thead>
+        <tbody>
+            <% @payments.each do |payment| %>
+                <tr>
+                    <td><%= payment.payment_date %></td>
+                    <td><%= payment.issuing_bank %></td>
+                    <td><%= payment.reference %></td>
+                    <td><%= payment.receiving_bank %></td>
+                    <td><%= payment.amount %> Bs.S</td>
+                    <td><%= image_tag payment.payment_support, width: 100, height: 100 if payment.payment_support.attached? %></td>
+                    <td><input type="checkbox" disabled <%= "checked" if payment.verified %> ></td>
+                    <td><%= payment.bill.status if payment.bill %></td>
+                    <td><%= payment.bill.fee.month if payment.bill %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</section>

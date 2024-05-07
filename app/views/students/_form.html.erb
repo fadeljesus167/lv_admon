@@ -1,7 +1,7 @@
-<%= form_with model: @student do |form| %>
+<%= form_with model: @student, class: 'w-50 mx-auto' do |form| %>
     <div class="mb-3 px-3">
         <%= form.label :name, class: 'form-label' %>
-        <%= form.text_field :name, class: 'form-control' %>
+        <%= form.text_field :name, class: 'form-control', autofocus: true %>
     </div>
 
     <div class="mb-3 px-3">
@@ -16,8 +16,11 @@
 
     <div class="mb-3 px-3">
         <%= form.label :entry_date, class: 'form-label' %>
-        <%= form.date_field :entry_date, class: 'form-control' %>
+        <%= form.date_field :entry_date, class: 'form-control', onFocus: 'this.showPicker()' %>
     </div>
 
-    <%= form.submit 'Create', class: 'btn btn-success' %>
+    <div class="mb-3 px-3">
+        <%= form.submit 'Create', class: 'btn btn-success' %>
+        <%= link_to 'Cancel', students_path, class: 'btn btn-danger' %>
+    </div>
 <% end %>

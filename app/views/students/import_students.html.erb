@@ -1,9 +1,15 @@
-<h1>Add Student List</h1>
+<div class="container py-2">
+    <h1>Add Student List</h1>
+</div>
 
-<p>Upload a csv file that contain the students list</p>
-
-<%= form_with url: import_students_path do |form| %>
-    <%= form.file_field :students_file %>
+<%= form_with url: import_students_path, class: 'w-50' do |form| %>
+    <div class="mb-3 px-3">
+        <%= form.file_field :students_file, class: 'form-control' %>
+        <span class="form-text">Upload a csv file that contain the students list</span>
+    </div>
     
-    <%= form.submit 'Upload' %>
+    <div class="mb-3 px-3">
+        <%= form.submit 'Upload', class: 'btn btn-success' %>
+        <%= link_to 'Cancel', students_path, class: 'btn btn-danger' %>
+    </div>
 <% end %>
