@@ -1,8 +1,10 @@
-<h1>Payments List</h1>
-<ul>
-    <li><%= link_to 'New payment', new_payment_path, data: { turbo_frame: 'new_payment' } %></li>
-    <li><%= link_to 'Verify', payments_verify_path %></li>
-</ul>
+<div class="container d-flex justify-content-between align-items-center py-2">
+    <h1>Payments List</h1>
+    <span class="btn-group">
+        <%= link_to 'New payment', new_payment_path, class: 'btn btn-success', data: { turbo_frame: 'new_payment' } %>
+        <%= link_to 'Verify', payments_verify_path, class: 'btn btn-primary' %>
+    </span>
+</div>
 
 <%= turbo_frame_tag "new_payment" %>
 

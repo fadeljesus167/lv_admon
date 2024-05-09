@@ -2,6 +2,15 @@ class SessionsController < ApplicationController
   skip_before_action :protect_pages
 
   def new
+    unless session[:user_id].nil?
+      redirect_to students_path
+    end
+  end
+
+  def destroy
+    session.delete(:user_id)
+
+    redirect_to login_path
   end
 
   def login

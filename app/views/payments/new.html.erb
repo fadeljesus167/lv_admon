@@ -1,57 +1,58 @@
 <%= turbo_frame_tag "new_payment" do %>
-    <%= form_with model: @payment do |form| %>
-        <div>
-            <%= form.label :payment_date %>
-            <%= form.date_field :payment_date %>
+    <%= form_with model: @payment, class: 'w-50 mx-auto' do |form| %>
+        <div class="mb-3 px-3">
+            <%= form.label :payment_date, class: 'form-label' %>
+            <%= form.date_field :payment_date, class: 'form-control' %>
         </div>
 
-        <div>
-            <%= form.label :school_term_id %>
-            <%= form.select :school_term_id, SchoolTerm.all.collect { |st| ["#{st.start_date.year}-#{st.end_date.year}", st.id] } %>
+        <div class="mb-3 px-3">
+            <%= form.label :school_term_id, class: 'form-label' %>
+            <%= form.select :school_term_id, SchoolTerm.all.collect { |st| ["#{st.start_date.year}-#{st.end_date.year}", st.id] }, {}, class: 'form-select' %>
+        </div class="mb-3 px-3">
+
+        <div class="mb-3 px-3">
+            <%= form.label :payment_type, class: 'form-label' %>
+            <%= form.select :payment_type, Payment.payment_types.keys.map { |key| [key.to_s, key] }, {}, class: 'form-select' %>
         </div>
 
-        <div>
-            <%= form.label :payment_type %>
-            <%= form.select :payment_type, Payment.payment_types.keys.map { |key| [key.to_s, key] } %>
+        <div class="mb-3 px-3">
+            <%= form.label :issuing_bank, class: 'form-label' %>
+            <%= form.select :issuing_bank, issuing_banks, {}, class: 'form-select' %>
         </div>
 
-        <div>
-            <%= form.label :issuing_bank %>
-            <%= form.select :issuing_bank, issuing_banks %>
+        <div class="mb-3 px-3">
+            <%= form.label :receiving_bank, class: 'form-label' %>
+            <%= form.select :receiving_bank, receiving_banks, {}, class: 'form-select' %>
         </div>
 
-        <div>
-            <%= form.label :receiving_bank %>
-            <%= form.select :receiving_bank, receiving_banks %>
+        <div class="mb-3 px-3">
+            <%= form.label :reference, class: 'form-label' %>
+            <%= form.text_field :reference, class: 'form-control' %>
         </div>
 
-        <div>
-            <%= form.label :reference %>
-            <%= form.text_field :reference %>
+        <div class="mb-3 px-3">
+            <%= form.label :amount, class: 'form-label' %>
+            <%= form.number_field :amount, step: 0.01, class: 'form-control' %>
         </div>
 
-        <div>
-            <%= form.label :amount %>
-            <%= form.number_field :amount, step: 0.01 %>
+        <div class="mb-3 px-3">
+            <%= form.label :rate, class: 'form-label' %>
+            <%= form.number_field :rate, step: 0.01, class: 'form-control' %>
         </div>
 
-        <div>
-            <%= form.label :rate %>
-            <%= form.number_field :rate, step: 0.01 %>
+        <div class="mb-3 px-3">
+            <%= form.label :payment_support, class: 'form-label' %>
+            <%= form.file_field :payment_support, class: 'form-control' %>
         </div>
 
-        <div>
-            <%= form.label :payment_support %>
-            <%= form.file_field :payment_support %>
+        <div class="mb-3 px-3">
+            <%= form.label :student_id, class: 'form-label' %>
+            <%= form.collection_select :student_id, Student.all.order(name: :asc), :id, :name, {} , { prompt: true, class: 'form-select' } %>
         </div>
 
-        <div>
-            <%= form.label :student_id %>
-            <%= form.collection_select :student_id, Student.all.order(name: :asc), :id, :name, prompt: true %>
-        </div>
-
-        <div>
-            <%= form.submit 'Register payment' %>
+        <div class="mb-3 px-3">
+            <%= form.submit 'Register payment', class: 'btn btn-success' %>
+            <%= link_to 'Cancel', payments_path, class: 'btn btn-danger' %>
         </div>
     <% end %>
 <% end %>
