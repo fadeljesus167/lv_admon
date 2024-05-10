@@ -1,4 +1,5 @@
 <%= turbo_frame_tag "new_payment" do %>
+    
     <%= form_with model: @payment, class: 'w-50 mx-auto' do |form| %>
         <div class="mb-3 px-3">
             <%= form.label :payment_date, class: 'form-label' %>
@@ -55,4 +56,5 @@
             <%= link_to 'Cancel', payments_path, class: 'btn btn-danger' %>
         </div>
     <% end %>
+            
 <% end %>

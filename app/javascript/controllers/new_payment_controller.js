@@ -1,8 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
+// Connects to data-controller="new-payment"
 export default class extends Controller {
   connect() {
     console.log("Hello World")
-    this.element.textContent = "Hello World!"
   }
 }
