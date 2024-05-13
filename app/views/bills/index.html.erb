@@ -1,6 +1,7 @@
-<ul>
-  <li><%= link_to 'New bill', new_bill_path %></li>
-</ul>
+<div class="container d-flex justify-content-between align-items-center py-2">
+  <h1>Bills</h1>
+    <%= link_to 'New bill', new_bill_path, class: 'btn btn-success', data: { turbo_frame: 'new_payment' } %>
+</div>
 
 <table class="table table-hover">
   <thead>
