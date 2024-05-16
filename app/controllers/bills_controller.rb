@@ -4,12 +4,14 @@ class BillsController < ApplicationController
   end
 
   def new
+    authorize_user!(current_user)
     billed_payments = []
     Bill.all.includes(:payment).each { |bill| billed_payments << bill.payment }
     @payments = Payment.where(verified: true).excluding(billed_payments)
   end
 
   def create
+    authorize_user!(current_user)
     @bill = Bill.new(bill_params)
 
     if @bill.save
@@ -18,6 +20,7 @@ class BillsController < ApplicationController
   end
 
   def generate
+    authorize_user!(current_user)
     @payment = Payment.find(params[:id])
     @student = @payment.student
     @bill = Bill.new
@@ -29,6 +32,7 @@ class BillsController < ApplicationController
   end
 
   def update
+    authorize_user!(current_user)
     @bill = Bill.find(params[:id])
 
     if @bill.update(bill_params)

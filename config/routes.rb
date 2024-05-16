@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'sessions/new', as: :login
-  post 'sessions/new', to: 'sessions#login'
-  delete 'sessions/', to: 'sessions#destroy', as: :logout
+  namespace :authentication, path: '/', as: '' do
+    get 'sessions/new', as: :login
+    post 'sessions/new', to: 'sessions#login'
+    delete 'sessions/', to: 'sessions#destroy', as: :logout
+  end
   get 'bills/index', as: :bills
   post 'bills/index', to: 'bills#create'
   get 'bills/new', as: :new_bill

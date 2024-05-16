@@ -4,10 +4,12 @@ class PaymentsController < ApplicationController
   end
 
   def new
+    authorize_user!(current_user)
     @payment = Payment.new
   end
 
   def create
+    authorize_user!(current_user)
     @payment = Payment.new(payment_params)
 
     if @payment.save
