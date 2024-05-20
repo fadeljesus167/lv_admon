@@ -1,14 +1,14 @@
-<h1>Not verified payments</h1>
+<h1><%= t('.title') %></h1>
 
 <table class="table table-hover">
   <thead>
-      <th>Date</th>
-      <th>Issuing Bank</th>
-      <th>Reference</th>
-      <th>Receiving Bank</th>
-      <th>Amount</th>
-      <th>Payment Support</th>
-      <th>Verified</th>
+      <th><%= t('.date') %></th>
+      <th><%= t('.issuing_bank') %></th>
+      <th><%= t('.reference') %></th>
+      <th><%= t('.receiving_bank') %></th>
+      <th><%= t('.amount') %></th>
+      <th><%= t('.payment_support') %></th>
+      <th><%= t('.verified') %></th>
   </thead>
 
   <tbody>
@@ -20,7 +20,7 @@
         <td><%= payment.receiving_bank %></td>
         <td><%= payment.amount %> Bs.S</td>
         <td><%= image_tag payment.payment_support, width: 100, height: 100 if payment.payment_support.attached? %></td>
-        <td><%= link_to "Verify", verify_payment_path(payment), data: { turbo_method: :post } %></td>
+        <td><%= link_to t('.verify'), verify_payment_path(payment), class: 'btn btn-sm btn-success', data: { turbo_method: :post } %></td>
       </tr>
     <% end %>
   </tbody>

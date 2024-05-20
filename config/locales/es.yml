@@ -26,6 +26,14 @@ es:
       bills_link: Facturas
       login_link: Iniciar Sesion
       logout_link: Cerrar Sesion
+
+  authentication:
+    sessions:
+      new:
+        login: Entrar
+        username: Nombre de usuario
+        password: Contraseña
+
   students:
     index:
       title: Lista de estudiantes
@@ -89,3 +97,14 @@ es:
       rate: Tasa
       payment_support: Soporte de pago
       verified: Verificado
+  verifications:
+    verification:
+      title: Pagos por verificar
+      date: Fecha
+      issuing_bank: Banco emisor
+      reference: Referencia
+      receiving_bank: Banco receptor
+      amount: Monto
+      payment_support: Soporte de pago
+      verified: Verificado
+      verify: Verificar
