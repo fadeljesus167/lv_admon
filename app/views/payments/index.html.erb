@@ -1,8 +1,8 @@
 <div class="container d-flex justify-content-between align-items-center py-2">
-    <h1>Payments List</h1>
+    <h1><%= t('.title') %></h1>
     <span class="btn-group">
-        <%= link_to 'New payment', new_payment_path, class: 'btn btn-success', data: { turbo_frame: 'new_payment' } %>
-        <%= link_to 'Verify', payments_verify_path, class: 'btn btn-primary' %>
+        <%= link_to t('.new'), new_payment_path, class: 'btn btn-success', data: { turbo_frame: 'new_payment' } %>
+        <%= link_to t('.verify'), payments_verify_path, class: 'btn btn-primary' %>
     </span>
 </div>
 
@@ -16,14 +16,14 @@
 
 <table class="table table-hover">
     <thead>
-        <th>Student</th>
-        <th>Date</th>
-        <th>Issuing Bank</th>
-        <th>Reference</th>
-        <th>Receiving Bank</th>
-        <th>Amount</th>
-        <th>Payment Support</th>
-        <th>Verified</th>
+        <th><%= t('.student') %></th>
+        <th><%= t('.date') %></th>
+        <th><%= t('.issuing_bank') %></th>
+        <th><%= t('.reference') %></th>
+        <th><%= t('.receiving_bank') %></th>
+        <th><%= t('.amount') %></th>
+        <th><%= t('.payment_support') %></th>
+        <th><%= t('.verified') %></th>
     </thead>
     <tbody id="payments_table">
         <%= render partial: 'payment', collection: @payments %>

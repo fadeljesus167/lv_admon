@@ -1,15 +1,15 @@
 <div class="container py-2">
-    <h1>Add Student List</h1>
+    <h1><%= t('.title') %></h1>
 </div>
 
 <%= form_with url: import_students_path, class: 'w-50' do |form| %>
     <div class="mb-3 px-3">
         <%= form.file_field :students_file, class: 'form-control' %>
-        <span class="form-text">Upload a csv file that contain the students list</span>
+        <span class="form-text"><%= t('.file_info') %></span>
     </div>
     
     <div class="mb-3 px-3">
-        <%= form.submit 'Upload', class: 'btn btn-success' %>
-        <%= link_to 'Cancel', students_path, class: 'btn btn-danger' %>
+        <%= form.submit t('btn_create'), class: 'btn btn-success' %>
+        <%= link_to t('btn_cancel'), students_path, class: 'btn btn-danger' %>
     </div>
 <% end %>

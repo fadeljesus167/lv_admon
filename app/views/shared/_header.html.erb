@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <%= image_tag "https://logosmarcas.net/wp-content/uploads/2020/09/Linux-Simbolo.png", width: 75 %>
-      LvAdmon
+      <%= t('app_name') %>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,17 +10,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to 'Home', students_path, {class: 'nav-link active', aria: {current: 'page'}} %>
+          <%= link_to t('.students_link'), students_path, {class: 'nav-link', aria: {current: 'page'}} %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Payments', payments_path, {class: 'nav-link', aria: {current: 'page'}} %>
+          <%= link_to t('.payments_link'), payments_path, {class: 'nav-link', aria: {current: 'page'}} %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Bills', bills_path, {class: 'nav-link', aria: {current: 'page'}} %>
+          <%= link_to t('.bills_link'), bills_path, {class: 'nav-link', aria: {current: 'page'}} %>
         </li>
       </ul>
-      <%= link_to "Login", login_path, class: 'btn btn-success me-2' unless logged_in? %>
-      <%= link_to "Logout", logout_path, class: 'btn btn-danger', data: { turbo_method: :delete, turbo_confirm: 'Sure?' } if logged_in? %>
+      <%= link_to t('.login_link'), login_path, class: 'btn btn-success me-2' unless logged_in? %>
+      <%= link_to t('.logout_link'), logout_path, class: 'btn btn-danger', data: { turbo_method: :delete, turbo_confirm: t('confirm') } if logged_in? %>
     </div>
   </div>
 </nav>

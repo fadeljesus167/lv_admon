@@ -8,7 +8,7 @@ class Payment < ApplicationRecord
   has_one_attached :payment_support
 
   belongs_to :student
-  has_one :bill
+  has_one :bill, dependent: :destroy
 
   enum payment_type: {
     transf: 0,

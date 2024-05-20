@@ -1,17 +1,17 @@
 <div class="container d-flex justify-content-between align-items-center py-2">
-    <h1>Students List</h1>
+    <h1><%= t('.title') %></h1>
     <span class="btn-group">
-        <%= link_to 'New Student', new_student_path, class: 'btn btn-success' %>
-        <%= link_to 'Import Students List', import_students_path, class: 'btn btn-primary' %>
+        <%= link_to t('.new_link'), new_student_path, class: 'btn btn-success' %>
+        <%= link_to t('.import_link'), import_students_path, class: 'btn btn-primary' %>
     </span>
 </div>
 
 <table class="table table-hover">
     <thead>
-        <th>Name</th>
-        <th>Grade</th>
-        <th>Quota</th>
-        <th>Entry Date</th>
+        <th><%= t('.header_name') %></th>
+        <th><%= t('.header_grade') %></th>
+        <th><%= t('.header_quota') %></th>
+        <th><%= t('.header_entry_date') %></th>
     </thead>
     <tbody>
         <%= render partial: 'student', collection: @students %>

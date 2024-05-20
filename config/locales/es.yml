@@ -1,0 +1,91 @@
+es:
+  app_name: LV Admon
+  confirm: Estas seguro?
+  btn_create: Aceptar
+  btn_cancel: Cancelar
+
+  months:
+    ins: Inscripcion
+    sep: Septiembre
+    oct: Octubre
+    nov: Noviembre
+    dec: Diciembre
+    jan: Enero
+    feb: Febrero
+    mar: Marzo
+    apr: Abril
+    may: Mayo
+    jun: Junio
+    jul: Julio
+    ago: Agosto
+
+  shared:
+    header:
+      students_link: Estudiantes
+      payments_link: Pagos
+      bills_link: Facturas
+      login_link: Iniciar Sesion
+      logout_link: Cerrar Sesion
+  students:
+    index:
+      title: Lista de estudiantes
+      header_name: Nombre
+      header_grade: Grado
+      header_quota: Cuota
+      header_entry_date: Fecha de inscripcion
+      new_link: Agregar estudiante
+      import_link: Importar lista de estudiantes
+    new:
+      title: Agregar Estudiante
+    form:
+      lb_name: Nombre
+      lb_grade: Grado
+      lb_quota: Cuota
+      lb_entry_date: Fecha de inscripcion
+    import_students:
+      title: Importar lista de estudiantes
+      file_info: Sube un archivo con formato CSV que contenga los datos de todos los estudiantes que desee agregar
+    show:
+      control: Control/Mes
+      grade: Grado
+      birthday: Fecha de nacimiento
+      entry_date: Fecha de inscripcion
+      quota: Cuota
+      title_payments: Pagos realizados
+      header_date: Fecha
+      issuing_bank: Banco emisor
+      reference: Referencia
+      receiving_bank: Banco receptor
+      amount: Monto
+      payment_support: Soporte de pago
+      verified: Verificado
+      bill_status: Factura
+      fee_month: Mes
+      edit: Editar
+      delete: Eliminar estudiante
+  payments:
+    index:
+      title: Lista de pagos registrados
+      new: Registrar pago
+      verify: Verificar pagos
+      student: Estudiante
+      date: Fecha
+      issuing_bank: Banco emisor
+      reference: Referencia
+      receiving_bank: Banco receptor
+      amount: Monto
+      payment_support: Soporte de pago
+      verified: Verificado
+    new:
+      title: Registrar pago
+      student: Estudiante
+      payment_date: Fecha
+      school_term: Periodo escolar
+      payment_type: Tipo de pago
+      issuing_bank: Banco emisor
+      reference: Referencia
+      receiving_bank: Banco receptor
+      amount: Monto
+      rate: Tasa
+      payment_support: Soporte de pago
+      verified: Verificado
