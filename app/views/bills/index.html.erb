@@ -1,25 +1,26 @@
 <div class="container d-flex justify-content-between align-items-center py-2">
-  <h1>Bills</h1>
-    <%= link_to 'New bill', new_bill_path, class: 'btn btn-success', data: { turbo_frame: 'new_payment' } %>
+  <h1><%= t('.title') %></h1>
+    <%= link_to t('.new_bill'), new_bill_path, class: 'btn btn-success', data: { turbo_frame: 'new_payment' } %>
 </div>
 
 <table class="table table-hover">
   <thead>
-    <th>Payment</th>
-    <th>Status</th>
-    <th>Delivered Date</th>
-    <th>Bill Date</th>
-    <th>Bill Reference</th>
+    <th><%= t('.payment') %></th>
+    <th><%= t('.status') %></th>
+    <th><%= t('.delivered_date') %></th>
+    <th><%= t('.bill_date') %></th>
+    <th><%= t('.bill_reference') %></th>
+    <th></th>
   </thead>
   <tbody>
     <% @bills.each do |bill| %>
       <tr>
         <td><%= bill.payment.reference %></td>
-        <td><%= bill.status %></td>
+        <td><%= t("common.bill_status.#{bill.status}") %></td>
         <td><%= bill.delivered_date %></td>
         <td><%= bill.bill_date %></td>
         <td><%= bill.bill_reference %></td>
-        <td><%= link_to "Modify", bill_path(bill) %></td>
+        <td class="text-center"><%= link_to t('.modify_link'), bill_path(bill), class: 'btn btn-secondary btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -6,57 +6,61 @@
 
     <%= form_with model: @payment, class: 'mx-auto' do |form| %>
         <div class="modal-body">
-            <div class="mb-3 px-3">
-                <%= form.label t('.student'), class: 'form-label' %>
-                <%= form.collection_select :student_id, Student.all.order(name: :asc), :id, :name, {} , { prompt: true, class: 'form-select' } %>
-            </div>
-
-            <div class="mb-3 px-3">
-                <%= form.label t('.payment_date'), class: 'form-label' %>
-                <%= form.date_field :payment_date, class: 'form-control', onFocus: 'this.showPicker()' %>
-            </div>
-
-            <div class="mb-3 px-3">
-                <%= form.label t('.school_term'), class: 'form-label' %>
-                <%= form.select :school_term_id, SchoolTerm.all.collect { |st| ["#{st.start_date.year}-#{st.end_date.year}", st.id] }, {}, class: 'form-select' %>
-            </div class="mb-3 px-3">
-
-            <div class="mb-3 px-3">
-                <%= form.label t('.payment_type'), class: 'form-label' %>
-                <%= form.select :payment_type, Payment.payment_types.keys.map { |key| [key.to_s, key] }, {}, class: 'form-select' %>
-            </div>
-
-            <div class="mb-3 px-3">
-                <%= form.label t('.issuing_bank'), class: 'form-label' %>
-                <%= form.select :issuing_bank, issuing_banks, {}, class: 'form-select' %>
-            </div>
-
-            <div class="mb-3 px-3">
-                <%= form.label t('.receiving_bank'), class: 'form-label' %>
-                <%= form.select :receiving_bank, receiving_banks, {}, class: 'form-select' %>
-            </div>
-
-            <div class="mb-3 px-3">
-                <%= form.label t('.reference'), class: 'form-label' %>
-                <%= form.text_field :reference, class: 'form-control' %>
-            </div>
-
-            <div class="mb-3 px-3">
-                <%= form.label t('.amount'), class: 'form-label' %>
-                <%= form.number_field :amount, step: 0.01, class: 'form-control' %>
-            </div>
-
-            <div class="mb-3 px-3">
-                <%= form.label t('.rate'), class: 'form-label' %>
-                <%= form.number_field :rate, step: 0.01, class: 'form-control' %>
-            </div>
-
-            <div class="mb-3 px-3">
-                <%= form.label t('.payment_support'), class: 'form-label' %>
-                <%= form.file_field :payment_support, class: 'form-control' %>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3 px-3">
+                        <%= form.label t('.student'), class: 'form-label' %>
+                        <%= form.collection_select :student_id, Student.all.order(name: :asc), :id, :name, {} , { prompt: true, class: 'form-select' } %>
+                    </div>
+        
+                    <div class="mb-3 px-3">
+                        <%= form.label t('.payment_date'), class: 'form-label' %>
+                        <%= form.date_field :payment_date, class: 'form-control', onFocus: 'this.showPicker()' %>
+                    </div>
+        
+                    <div class="mb-3 px-3">
+                        <%= form.label t('.school_term'), class: 'form-label' %>
+                        <%= form.select :school_term_id, SchoolTerm.all.collect { |st| ["#{st.start_date.year}-#{st.end_date.year}", st.id] }, {}, class: 'form-select' %>
+                    </div class="mb-3 px-3">
+        
+                    <div class="mb-3 px-3">
+                        <%= form.label t('.payment_type'), class: 'form-label' %>
+                        <%= form.select :payment_type, Payment.payment_types.keys.map { |key| [key.to_s, key] }, {}, class: 'form-select' %>
+                    </div>
+        
+                    <div class="mb-3 px-3">
+                        <%= form.label t('.issuing_bank'), class: 'form-label' %>
+                        <%= form.select :issuing_bank, issuing_banks, {}, class: 'form-select' %>
+                    </div>
+        
+                    <div class="mb-3 px-3">
+                        <%= form.label t('.receiving_bank'), class: 'form-label' %>
+                        <%= form.select :receiving_bank, receiving_banks, {}, class: 'form-select' %>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3 px-3">
+                        <%= form.label t('.reference'), class: 'form-label' %>
+                        <%= form.text_field :reference, class: 'form-control' %>
+                    </div>
+        
+                    <div class="mb-3 px-3">
+                        <%= form.label t('.amount'), class: 'form-label' %>
+                        <%= form.number_field :amount, step: 0.01, class: 'form-control' %>
+                    </div>
+        
+                    <div class="mb-3 px-3">
+                        <%= form.label t('.rate'), class: 'form-label' %>
+                        <%= form.number_field :rate, step: 0.01, class: 'form-control' %>
+                    </div>
+        
+                    <div class="mb-3 px-3">
+                        <%= form.label t('.payment_support'), class: 'form-label' %>
+                        <%= form.file_field :payment_support, class: 'form-control' %>
+                    </div>
+                </div>
             </div>
         </div>
-
         <div class="modal-footer mb-3 px-3">
             <%= form.submit t('btn_create'), class: 'btn btn-success' %>
             <%= link_to t('btn_cancel'), payments_path, class: 'btn btn-danger', data: { bs_dismiss: 'modal' } %>

@@ -22,6 +22,10 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def get_image
+    @payment = Payment.find_by(id: params[:id])
+  end
+
   private
   def payment_params
     params.require(:payment).permit(:payment_date, :school_term_id, :payment_type, :issuing_bank, :reference, :receiving_bank, :amount, :payment_support, :rate, :student_id)

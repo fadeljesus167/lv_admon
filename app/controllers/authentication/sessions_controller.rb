@@ -20,7 +20,7 @@ class Authentication::SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to students_path
     else
-      render :new, alert: 'Invalid login', status: :unprocessable_entity
+      redirect_to login_path, alert: t('.invalid_login')
     end
   end
 end

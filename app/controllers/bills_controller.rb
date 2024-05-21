@@ -13,7 +13,8 @@ class BillsController < ApplicationController
   def create
     authorize_user!(current_user)
     @bill = Bill.new(bill_params)
-
+    @bill.bill_date = Date.today
+    
     if @bill.save
       redirect_to bills_path
     end
@@ -27,7 +28,7 @@ class BillsController < ApplicationController
     @bill.fee = Fee.new
   end
 
-  def show
+  def edit
     @bill = Bill.find(params[:id])
   end
 
@@ -38,7 +39,7 @@ class BillsController < ApplicationController
     if @bill.update(bill_params)
       redirect_to bills_path
     else
-      render :show
+      render :edit
     end
   end
 

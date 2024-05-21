@@ -1,8 +1,17 @@
 es:
   app_name: LV Admon
+  authentication_error: Necesitas iniciar session primero
   confirm: Estas seguro?
   btn_create: Aceptar
   btn_cancel: Cancelar
+  btn_update: Actualizar
+
+  common:
+    bill_status:
+      processing: Por entregar
+      completed: Entregada
+      canceled: Anulada
+
 
   months:
     ins: Inscripcion
@@ -33,6 +42,8 @@ es:
         login: Entrar
         username: Nombre de usuario
         password: Contraseña
+      login:
+        invalid_login: Credenciales invalidas
 
   students:
     index:
@@ -71,6 +82,7 @@ es:
       fee_month: Mes
       edit: Editar
       delete: Eliminar estudiante
+  
   payments:
     index:
       title: Lista de pagos registrados
@@ -97,6 +109,7 @@ es:
       rate: Tasa
       payment_support: Soporte de pago
       verified: Verificado
+  
   verifications:
     verification:
       title: Pagos por verificar
@@ -108,3 +121,40 @@ es:
       payment_support: Soporte de pago
       verified: Verificado
       verify: Verificar
+    
+  bills:
+    index:
+      title: Facturas
+      new_bill: Crear factura
+      payment: Ref. Pago
+      status: Estado
+      delivered_date: Entregado el
+      bill_date: Realizado el
+      bill_reference: Ref. Factura
+      modify_link: Modificar
+    new:
+      title: Lista de pagos verificados
+      date: Fecha
+      issuing_bank: Banco emisor
+      reference: Referencia
+      receiving_bank: Banco receptor
+      amount: Monto
+      payment_support: Soporte de pago
+      verified: Verificado
+    payment:
+      generate_bill_link: Generar factura
+    generate:
+      payment_id: Id. Pago
+      bill_date: Fecha Factura
+      delivered_date: Fecha de entrega
+      bill_reference: Ref. Factura
+      bill_description: Concepto
+      bill_type: Tipo
+      student_id: Id. Estudiante
+      month: Mes
+      transfer: Transferencia
+      credit: Credito
+      cash: Efectivo
+    edit:
+      delivered_date: Fecha de entrega
+      status: Estado      

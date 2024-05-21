@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   private
   def protect_pages
     if session[:user_id].nil?
-      redirect_to login_path, alert: 'You have to login in first'
+      redirect_to login_path, alert: t('authentication_error')
     end
   end
 

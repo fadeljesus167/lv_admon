@@ -1,12 +1,14 @@
+<div class="container d-flex justify-content-between align-items-center py-2">
+  <h1><%= t('.title') %></h1>
+</div>
 <table class="table table-hover">
   <thead>
-      <th>Date</th>
-      <th>Issuing Bank</th>
-      <th>Reference</th>
-      <th>Receiving Bank</th>
-      <th>Amount</th>
-      <th>Payment Support</th>
-      <th>Verified</th>
+      <th><%= t('.date') %></th>
+      <th><%= t('.issuing_bank') %></th>
+      <th><%= t('.reference') %></th>
+      <th><%= t('.receiving_bank') %></th>
+      <th><%= t('.amount') %></th>
+      <th><%= t('.payment_support') %></th>
   </thead>
   <tbody id="payments_table">
       <%= render partial: 'payment', collection: @payments %>

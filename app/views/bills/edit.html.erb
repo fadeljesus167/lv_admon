@@ -1,0 +1,16 @@
+<%= form_with model: @bill, class: 'w-50 mx-auto' do |form| %>
+    <div class="mb-3 px-3">
+        <%= form.label t('.delivered_date'), class: 'form-label' %>
+        <%= form.date_field :delivered_date, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3 px-3">
+        <%= form.label t('.status'), class: 'form-label' %>
+        <%= form.select :status, [[t('common.bill_status.processing'), :processing],[t('common.bill_status.canceled'), :canceled],[t('common.bill_status.completed'), :completed]], {}, class: 'form-select' %>
+    </div>
+
+    <div class="mb-3 px-3">
+        <%= form.submit t('btn_update'), class: 'btn btn-success' %>
+        <%= link_to t('btn_cancel'), students_path, class: 'btn btn-danger' %>
+    </div>
+<% end %>

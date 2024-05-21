@@ -1,48 +1,44 @@
 <h3><%= @student.name %></h3>
 <%= form_with model: @bill, url: bills_path, class: 'w-75 mx-auto'  do |form| %>
     <div class="mb-3">
-        <%= form.label :payment_id, class: 'form-label' %>
+        <%= form.label t('.payment_id'), class: 'form-label' %>
         <%= form.text_field :payment_id , { value: @payment.id, class: 'form-control' } %>
     </div>
 
     <div class="mb-3">
-        <%= form.label :bill_date, class: 'form-label' %>
-        <%= form.date_field :bill_date, class: 'form-control' %>
-    </div>
-
-    <div class="mb-3">
-        <%= form.label :delivered_date, class: 'form-label' %>
-        <%= form.date_field :delivered_date, class: 'form-control' %>
-    </div>
-
-    <div class="mb-3">
-        <%= form.label :bill_reference, class: 'form-label' %>
+        <%= form.label t('.bill_reference'), class: 'form-label' %>
         <%= form.text_field :bill_reference, class: 'form-control' %>
     </div>
 
     <div class="mb-3">
-        <%= form.label :bill_description, class: 'form-label' %>
+        <%= form.label t('.bill_description'), class: 'form-label' %>
         <%= form.text_field :bill_description, class: 'form-control' %>
     </div>
 
     <div class="mb-3">
-        <%= form.label :bill_type, class: 'form-label' %>
-        <%= form.select :bill_type, Bill.bill_types.keys.map { |key| [key.to_s, key] }, {}, class: 'form-select' %>
+        <%= form.label t('.bill_type'), class: 'form-label' %>
+        <%= form.select :bill_type, Bill.bill_types.keys.map { |key| [t(".#{key}"), key] }, {}, class: 'form-select' %>
     </div>
 
     <%= form.fields_for :fee, include_id: false do |form_fee| %>
         <div class="mb-3">
-            <%= form_fee.label :student_id, class: 'form-label' %>
+            <%= form_fee.label t('.student_id'), class: 'form-label' %>
             <%= form_fee.text_field :student_id, value: @student.id, class: 'form-control' %>
         </div>
         
         <div class="mb-3">
-            <%= form_fee.label :month, class: 'form-label' %>
+            <%= form_fee.label t('.month'), class: 'form-label' %>
             <%= form_fee.select :month, Fee.months.keys.map { |key| [key.to_s, key] }, {}, class: 'form-select' %>
         </div>
     <% end %>
 
     <div class="mb-3">
-        <%= form.submit 'Register bill', class: 'btn btn-success btn-sm' %>
+        <%= form.label t('.delivered_date'), class: 'form-label' %>
+        <%= form.date_field :delivered_date, class: 'form-control' %>
+    </div>
+
+    <div class="mb-3">
+        <%= form.submit t('btn_create'), class: 'btn btn-success btn-sm' %>
+        <%= link_to t('btn_cancel'), bills_path, class: 'btn btn-danger btn-sm' %>
     </div>
 <% end %>

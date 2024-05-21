@@ -6,10 +6,18 @@
     </span>
 </div>
 
-<div class="modal" tabindex="-1" id="myModal" data-controller="new_payment" data-action="turbo:frame-load->new_payment#open turbo:submit-end->new_payment#close">
+<div class="modal" tabindex="-1" id="paymentModal" data-controller="new_payment" data-action="turbo:frame-load->new_payment#open turbo:submit-end->new_payment#close">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <%= turbo_frame_tag "new_payment" %>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" id="imageModal" data-controller="image_modal" data-action="turbo:frame-load->image_modal#open">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= turbo_frame_tag "image_modal" %>
     </div>
   </div>
 </div>
