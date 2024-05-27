@@ -49,17 +49,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_16_133126) do
     t.integer "bill_type", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "fee_id", null: false
     t.index ["bill_reference"], name: "index_bills_on_bill_reference", unique: true
-    t.index ["fee_id"], name: "index_bills_on_fee_id"
     t.index ["payment_id"], name: "index_bills_on_payment_id"
   end
 
   create_table "fees", force: :cascade do |t|
     t.integer "student_id", null: false
+    t.integer "bill_id", null: false
     t.integer "month", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_fees_on_bill_id"
     t.index ["student_id"], name: "index_fees_on_student_id"
   end
 
@@ -107,8 +107,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_16_133126) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bills", "fees"
   add_foreign_key "bills", "payments"
+  add_foreign_key "fees", "bills"
   add_foreign_key "fees", "students"
   add_foreign_key "payments", "school_terms"
   add_foreign_key "payments", "students"

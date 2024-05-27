@@ -16,5 +16,4 @@ class Fee < ApplicationRecord
   }
 
   belongs_to :student
-  has_many :bills, dependent: :destroy
 end

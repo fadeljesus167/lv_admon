@@ -5,8 +5,8 @@ class Bill < ApplicationRecord
   enum status: { processing: 0, canceled: 1, completed: 2 }
   enum bill_type: { transfer: 0, credit: 1, cash: 2}
 
-  belongs_to :fee
   belongs_to :payment
+  has_many :fees
 
-  accepts_nested_attributes_for :fee, reject_if: :all_blank
+  accepts_nested_attributes_for :fees
 end

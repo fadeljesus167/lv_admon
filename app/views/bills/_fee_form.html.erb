@@ -1,0 +1,11 @@
+<%= form.fields_for :fees, include_id: false do |form_fee| %>
+    <div class="mb-3">
+        <%= form_fee.label t('.student_id'), class: 'form-label' %>
+        <%= form_fee.text_field :student_id, value: @student.id, class: 'form-control' %>
+    </div>
+    
+    <div class="mb-3">
+        <%= form_fee.label t('.month'), class: 'form-label' %>
+        <%= form_fee.select :month, Fee.months.keys.map { |key| [key.to_s, key] }, {}, class: 'form-select' %>
+    </div>
+<% end %>

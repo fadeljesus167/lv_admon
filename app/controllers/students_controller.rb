@@ -7,7 +7,7 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.includes(:payments).find(params[:id])
-    @payments = @student.payments.with_attached_payment_support.includes(:bill)
+    @payments = @student.payments.with_attached_payment_support.includes(:bill, :fees)
     @paid_months = @student.fees.pluck(:month)
   end
 

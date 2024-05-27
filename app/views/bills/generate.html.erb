@@ -20,16 +20,8 @@
         <%= form.select :bill_type, Bill.bill_types.keys.map { |key| [t(".#{key}"), key] }, {}, class: 'form-select' %>
     </div>
 
-    <%= form.fields_for :fee, include_id: false do |form_fee| %>
-        <div class="mb-3">
-            <%= form_fee.label t('.student_id'), class: 'form-label' %>
-            <%= form_fee.text_field :student_id, value: @student.id, class: 'form-control' %>
-        </div>
-        
-        <div class="mb-3">
-            <%= form_fee.label t('.month'), class: 'form-label' %>
-            <%= form_fee.select :month, Fee.months.keys.map { |key| [key.to_s, key] }, {}, class: 'form-select' %>
-        </div>
+    <% 3.times do %>
+        <%= render partial: 'fee_form', locals: {form: form} %>
     <% end %>
 
     <div class="mb-3">

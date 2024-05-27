@@ -25,7 +25,7 @@ class BillsController < ApplicationController
     @payment = Payment.find(params[:id])
     @student = @payment.student
     @bill = Bill.new
-    @bill.fee = Fee.new
+    @bill.fees = [Fee.new]
   end
 
   def edit
@@ -45,6 +45,6 @@ class BillsController < ApplicationController
 
   private
   def bill_params
-    params.require(:bill).permit(:payment_id, :bill_date, :delivered_date, :bill_reference, :status, :bill_description, fee_attributes: [:student_id, :month])
+    params.require(:bill).permit(:payment_id, :bill_date, :delivered_date, :bill_type, :bill_reference, :status, :bill_description, fees_attributes: [:student_id, :month])
   end
 end

@@ -143,6 +143,9 @@ es:
       verified: Verificado
     payment:
       generate_bill_link: Generar factura
+    fee_form:
+      student_id: Id. Estudiante
+      month: Mes
     generate:
       payment_id: Id. Pago
       bill_date: Fecha Factura
