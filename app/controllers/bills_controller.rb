@@ -26,6 +26,9 @@ class BillsController < ApplicationController
     @student = @payment.student
     @bill = Bill.new
     @bill.fees = [Fee.new]
+    paid_months = @student.fees.pluck(:month)
+    bill_months = Fee.months.keys
+    @months = bill_months - paid_months
   end
 
   def edit

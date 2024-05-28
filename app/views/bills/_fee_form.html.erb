@@ -6,6 +6,6 @@
     
     <div class="mb-3">
         <%= form_fee.label t('.month'), class: 'form-label' %>
-        <%= form_fee.select :month, Fee.months.keys.map { |key| [key.to_s, key] }, {}, class: 'form-select' %>
+        <%= form_fee.select :month, @months, {}, class: 'form-select' %>
     </div>
 <% end %>

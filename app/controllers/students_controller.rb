@@ -9,6 +9,7 @@ class StudentsController < ApplicationController
     @student = Student.includes(:payments).find(params[:id])
     @payments = @student.payments.with_attached_payment_support.includes(:bill, :fees)
     @paid_months = @student.fees.pluck(:month)
+    @partial_payment = calculate_partial_payments(@payments)
   end
 
   def edit
@@ -63,4 +64,13 @@ end
 private
 def student_params
   params.require(:student).permit(:name, :grade, :quota, :entry_date)
+end
+
+def calculate_partial_payments(payments)
+  last_payment = payments.last
+  total_amount = last_payment.amount/last_payment.rate
+
+  unless (total_amount.to_i/last_payment.student.quota).eql?(0)
+    [last_payment.student.fees.last.month]
+  end
 end
