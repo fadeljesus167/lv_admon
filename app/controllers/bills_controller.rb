@@ -28,7 +28,9 @@ class BillsController < ApplicationController
     @bill.fees = [Fee.new]
     paid_months = @student.fees.pluck(:month)
     bill_months = Fee.months.keys
-    @months = bill_months - paid_months
+    partial_payment = calculate_partial_payments(@student.payments)
+    pp partial_payment
+    @months = partial_payment + (bill_months - paid_months)
   end
 
   def edit
@@ -49,5 +51,13 @@ class BillsController < ApplicationController
   private
   def bill_params
     params.require(:bill).permit(:payment_id, :bill_date, :delivered_date, :bill_type, :bill_reference, :status, :bill_description, fees_attributes: [:student_id, :month])
+  end
+
+  def calculate_partial_payments(payments)
+    last_payment = payments.second_to_last
+    total_amount = last_payment.amount/last_payment.rate
+    unless (total_amount.to_f/last_payment.student.quota).eql?(0.0)
+      [last_payment.student.fees.last.month]
+    end
   end
 end

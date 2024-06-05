@@ -1,9 +1,17 @@
 <div class="container d-flex justify-content-between align-items-center py-2">
     <h1><%= t('.title') %></h1>
     <span class="btn-group">
-        <%= link_to t('.new_link'), new_student_path, class: 'btn btn-success' %>
+        <%= link_to t('.new_link'), new_student_path, class: 'btn btn-success', data: {turbo_frame: "new_student"} %>
         <%= link_to t('.import_link'), import_students_path, class: 'btn btn-primary' %>
     </span>
+</div>
+
+<div class="modal" tabindex="-1" id="studentModal" data-controller="modal" data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <%= turbo_frame_tag "new_student" %>
+        </div>
+    </div>
 </div>
 
 <table class="table table-hover">

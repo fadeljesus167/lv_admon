@@ -1,26 +1,28 @@
-<%= form_with model: @student, class: 'w-50 mx-auto' do |form| %>
-    <div class="mb-3 px-3">
-        <%= form.label t('.lb_name'), class: 'form-label' %>
-        <%= form.text_field :name, class: 'form-control', autofocus: true %>
-    </div>
+<%= form_with model: @student, class: 'mx-auto' do |form| %>
+    <div class="modal-body">
+        <div class="mb-3 px-3">
+            <%= form.label t('.lb_name'), class: 'form-label' %>
+            <%= form.text_field :name, class: 'form-control', autofocus: true %>
+        </div>
 
-    <div class="mb-3 px-3">
-        <%= form.label t('.lb_grade'), class: 'form-label' %>
-        <%= form.select :grade, Student.grades, {} ,class: 'form-select' %>
-    </div>
+        <div class="mb-3 px-3">
+            <%= form.label t('.lb_grade'), class: 'form-label' %>
+            <%= form.select :grade, Student.grades, {} ,class: 'form-select' %>
+        </div>
 
-    <div class="mb-3 px-3">
-        <%= form.label t('.lb_quota'), class: 'form-label' %>
-        <%= form.number_field :quota, class: 'form-control' %>
-    </div>
+        <div class="mb-3 px-3">
+            <%= form.label t('.lb_quota'), class: 'form-label' %>
+            <%= form.number_field :quota, class: 'form-control' %>
+        </div>
 
-    <div class="mb-3 px-3">
-        <%= form.label t('.lb_entry_date'), class: 'form-label' %>
-        <%= form.date_field :entry_date, class: 'form-control', onFocus: 'this.showPicker()' %>
-    </div>
+        <div class="mb-3 px-3">
+            <%= form.label t('.lb_entry_date'), class: 'form-label' %>
+            <%= form.date_field :entry_date, class: 'form-control', onFocus: 'this.showPicker()' %>
+        </div>
 
-    <div class="mb-3 px-3">
-        <%= form.submit t('btn_create'), class: 'btn btn-success' %>
-        <%= link_to t('btn_cancel'), students_path, class: 'btn btn-danger' %>
+        <div class="modal-footer mb-3 px-3">
+            <%= form.submit t('btn_create'), class: 'btn btn-success' %>
+            <%= link_to t('btn_cancel'), students_path, class: 'btn btn-danger', data: { bs_dismiss: 'modal' } %>
+        </div>
     </div>
 <% end %>

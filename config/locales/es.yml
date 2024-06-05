@@ -146,7 +146,7 @@ es:
     fee_form:
       student_id: Id. Estudiante
       month: Mes
-    generate:
+    form:
       payment_id: Id. Pago
       bill_date: Fecha Factura
       delivered_date: Fecha de entrega

@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
-  validates :payment_date, presence: true
+  validates :payment_date, presence: true, comparison: { less_than_or_equal_to: Date.today }
   validates :issuing_bank, presence: true
   validates :reference, presence: true, uniqueness: true
   validates :receiving_bank, presence: true

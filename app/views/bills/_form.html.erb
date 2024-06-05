@@ -1,0 +1,42 @@
+<%= form_with model: @bill, url: bills_path, class: 'w-75 mx-auto'  do |form| %>
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <%= form.label t('.payment_id'), class: 'form-label' %>
+                <%= form.text_field :payment_id , { value: @payment.id, class: 'form-control' } %>
+            </div>
+        
+            <div class="mb-3">
+                <%= form.label t('.bill_reference'), class: 'form-label' %>
+                <%= form.text_field :bill_reference, class: 'form-control' %>
+            </div>
+        
+            <div class="mb-3">
+                <%= form.label t('.bill_description'), class: 'form-label' %>
+                <%= form.text_field :bill_description, class: 'form-control' %>
+            </div>
+        
+            <div class="mb-3">
+                <%= form.label t('.bill_type'), class: 'form-label' %>
+                <%= form.select :bill_type, Bill.bill_types.keys.map { |key| [t(".#{key}"), key] }, {}, class: 'form-select' %>
+            </div>
+
+            <div class="mb-3">
+                <%= form.label t('.delivered_date'), class: 'form-label' %>
+                <%= form.date_field :delivered_date, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div class="col">
+            <% calculate_fee_form_fields(@payment).to_i.times do %>
+                <%= render partial: 'fee_form', locals: {form: form} %>
+            <% end %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 text-center">
+            <%= form.submit t('btn_create'), class: 'btn btn-success btn-sm' %>
+            <%= link_to t('btn_cancel'), bills_path, class: 'btn btn-danger btn-sm' %>
+        </div>
+    </div>
+<% end %>

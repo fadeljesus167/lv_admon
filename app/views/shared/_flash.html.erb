@@ -1,2 +1,7 @@
-<%= alert %>
-<%= notice %>
+<% if alert %>
+    <aside class="alert alert-danger w-25 position-relative top-0 start-50 translate-middle-x mb-0 mt-1" role="alert"><%= alert %></aside>
+<% end %>
+
+<% if notice %>
+    <aside class="alert alert-success w-25 position-relative top-0 start-50 translate-middle-x mb-0 mt-1" role="alert"><%= notice %></aside>
+<% end %>
