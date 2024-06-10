@@ -29,7 +29,6 @@ class BillsController < ApplicationController
     paid_months = @student.fees.pluck(:month)
     bill_months = Fee.months.keys
     partial_payment = calculate_partial_payments(@student.payments)
-    pp partial_payment
     @months = partial_payment + (bill_months - paid_months)
   end
 
@@ -55,6 +54,7 @@ class BillsController < ApplicationController
 
   def calculate_partial_payments(payments)
     last_payment = payments.second_to_last
+    return [] if last_payment.nil?
     total_amount = last_payment.amount/last_payment.rate
     unless (total_amount.to_f/last_payment.student.quota).eql?(0.0)
       [last_payment.student.fees.last.month]

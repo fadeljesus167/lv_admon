@@ -13,10 +13,20 @@
           <%= link_to t('.students_link'), students_path, {class: 'nav-link', aria: {current: 'page'}} %>
         </li>
         <li class="nav-item">
-          <%= link_to t('.payments_link'), payments_path, {class: 'nav-link', aria: {current: 'page'}} %>
+          <%= link_to payments_path, {class: 'nav-link position-relative', aria: {current: 'page'}} do %>
+            <%= t('.payments_link') %>
+            <% if per_verify_payments %>
+              <span class="position-absolute top-50 start-100 translate-middle p-1 bg-secondary border border-light rounded-circle"></span>
+            <% end %>
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to t('.bills_link'), bills_path, {class: 'nav-link', aria: {current: 'page'}} %>
+          <%= link_to bills_path, {class: 'nav-link position-relative', aria: {current: 'page'}} do %>
+            <%= t('.bills_link') %>
+            <% if per_generate_bills %>
+              <span class="position-absolute top-50 start-100 translate-middle p-1 bg-secondary border border-light rounded-circle"></span>
+            <% end %>
+          <% end %>
         </li>
       </ul>
       <%= link_to t('.login_link'), login_path, class: 'btn btn-success me-2' unless logged_in? %>
@@ -24,3 +34,4 @@
     </div>
   </div>
 </nav>
+

@@ -24,16 +24,16 @@
                 <div class="row row-cols-4">
                     <% Fee.months.keys.each do |key| %>
                         <div class="col">
-                            <% if @partial_payment.include?(key) %>
-                                <div class="card w-75 mx-auto mb-1 py-1 bg-info">
-                                    <span class="card-text text-center"><%= t("months.#{key}") %></span>
-                            <% else %>
-                                <% if @paid_months.include?(key) %>
+                            <% if @paid_months.include?(key) %>
                                     <div class="card w-75 mx-auto mb-1 py-1 bg-success">
                                         <span class="card-text text-center"><%= t("months.#{key}") %></span>
+                            <% else %>
+                                    <% if @partial_payment.include?(key) %>
+                                        <div class="card w-75 mx-auto mb-1 py-1 bg-info">
+                                            <span class="card-text text-center"><%= t("months.#{key}") %></span>
                                 <% else %>
                                     <div class="card w-75 mx-auto mb-1 py-1 bg-danger">
-                                    <span class="card-text text-center bg-danger"><%= t("months.#{key}") %></span>
+                                        <span class="card-text text-center bg-danger"><%= t("months.#{key}") %></span>
                                 <% end %>
                             <% end %>
                             </div>
