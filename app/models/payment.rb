@@ -9,7 +9,7 @@ class Payment < ApplicationRecord
 
   belongs_to :student
   has_one :bill, dependent: :destroy
-  has_many :fees, through: :bill
+  has_many :fees, through: :bill, dependent: :destroy
 
   enum payment_type: {
     transf: 0,

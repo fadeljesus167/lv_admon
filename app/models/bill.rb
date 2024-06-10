@@ -6,7 +6,7 @@ class Bill < ApplicationRecord
   enum bill_type: { transfer: 0, credit: 1, cash: 2}
 
   belongs_to :payment
-  has_many :fees
+  has_many :fees, dependent: :destroy
 
   accepts_nested_attributes_for :fees
 end

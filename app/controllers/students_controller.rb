@@ -51,10 +51,15 @@ class StudentsController < ApplicationController
   end
 
   def create_csv
-    file = CSV.read(params[:students_file])
+    if !params[:students_file].nil?
+      strip_converter = proc {|f| f.strip}
+      students_csv = CSV.parse(IO.read(params[:students_file]), headers: true, header_converters: strip_converter, converters: strip_converter)
+    else
+      return
+    end
 
-    file.each do |row|
-      Student.create(name: row[0], grade: row[1])
+    students_csv.each_slice(200) do |rows|
+      Student.insert_all(rows.map(&:to_h))
     end
 
     redirect_to students_path
