@@ -11,9 +11,8 @@ class Payment < ApplicationRecord
   has_one :bill, dependent: :destroy
   has_many :fees, through: :bill, dependent: :destroy
 
-  enum payment_type: {
-    transf: 0,
-    cash: 1,
-    zelle: 2
-  }
+  enum :payment_type, [ :transf, :cash, :zelle ]
+
+  scope :without_bill, -> { left_outer_joins(:bill).where(bills: { id: nil }) }
+  scope :ready_for_billing, -> { where(verified: true).without_bill }
 end

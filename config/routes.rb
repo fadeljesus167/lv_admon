@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "pages/home"
   namespace :authentication, path: '/', as: '' do
     get '/sessions/new', as: :login
     post '/sessions/new', to: 'sessions#login'
@@ -23,5 +24,5 @@ Rails.application.routes.draw do
   resources :payments
   get '/payments/:id/image', to: 'payments#get_image', as: :support_modal
 
-  root "students#index"
+  root "pages#home"
 end

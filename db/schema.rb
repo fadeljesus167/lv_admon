@@ -10,26 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_16_133126) do
+ActiveRecord::Schema[8.1].define(version: 2024_05_16_133126) do
   create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.bigint "record_id", null: false
+    t.string "record_type", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
+    t.string "content_type"
     t.datetime "created_at", null: false
+    t.string "filename", null: false
+    t.string "key", null: false
+    t.text "metadata"
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -40,69 +40,69 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_16_133126) do
   end
 
   create_table "bills", force: :cascade do |t|
-    t.integer "payment_id", default: 1, null: false
-    t.integer "status", default: 0, null: false
     t.date "bill_date", null: false
-    t.date "delivered_date"
-    t.string "bill_reference", null: false
     t.string "bill_description", null: false
+    t.string "bill_reference", null: false
     t.integer "bill_type", default: 0, null: false
     t.datetime "created_at", null: false
+    t.date "delivered_date"
+    t.integer "payment_id", default: 1, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "updated_at", null: false
     t.index ["bill_reference"], name: "index_bills_on_bill_reference", unique: true
     t.index ["payment_id"], name: "index_bills_on_payment_id"
   end
 
   create_table "fees", force: :cascade do |t|
-    t.integer "student_id", null: false
     t.integer "bill_id", null: false
-    t.integer "month", null: false
     t.datetime "created_at", null: false
+    t.integer "month", null: false
+    t.integer "student_id", null: false
     t.datetime "updated_at", null: false
     t.index ["bill_id"], name: "index_fees_on_bill_id"
     t.index ["student_id"], name: "index_fees_on_student_id"
   end
 
   create_table "payments", force: :cascade do |t|
-    t.date "payment_date", null: false
-    t.string "issuing_bank", null: false
-    t.string "reference", null: false
-    t.string "receiving_bank", null: false
     t.decimal "amount", precision: 15, scale: 2, null: false
-    t.decimal "rate", precision: 7, scale: 2, null: false
-    t.boolean "verified", default: false
-    t.integer "payment_type", default: 0, null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "student_id", default: 1, null: false
+    t.string "issuing_bank", null: false
+    t.date "payment_date", null: false
+    t.integer "payment_type", default: 0, null: false
+    t.decimal "rate", precision: 7, scale: 2, null: false
+    t.string "receiving_bank", null: false
+    t.string "reference", null: false
     t.integer "school_term_id", null: false
+    t.integer "student_id", default: 1, null: false
+    t.datetime "updated_at", null: false
+    t.boolean "verified", default: false
     t.index ["reference"], name: "index_payments_on_reference", unique: true
     t.index ["school_term_id"], name: "index_payments_on_school_term_id"
     t.index ["student_id"], name: "index_payments_on_student_id"
   end
 
   create_table "school_terms", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
     t.datetime "created_at", null: false
+    t.date "end_date"
+    t.date "start_date"
     t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "grade", null: false
-    t.integer "quota"
-    t.date "entry_date"
     t.datetime "created_at", null: false
+    t.date "entry_date"
+    t.string "grade", null: false
+    t.string "name", null: false
+    t.integer "quota"
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "password_digest", null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "password_digest", null: false
     t.integer "role", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.string "username", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

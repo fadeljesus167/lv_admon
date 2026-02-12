@@ -18,7 +18,7 @@ class Authentication::SessionsController < ApplicationController
 
     if @user&.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to students_path
+      redirect_to root_path
     else
       redirect_to login_path, alert: t('.invalid_login')
     end

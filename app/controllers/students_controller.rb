@@ -2,7 +2,7 @@ require 'csv'
 
 class StudentsController < ApplicationController
   def index
-    @students = Student.all.order(name: :asc)
+    @students = FindStudents.new.call(students_filter_params)
   end
 
   def show
@@ -64,17 +64,25 @@ class StudentsController < ApplicationController
 
     redirect_to students_path
   end
+
+  private
+  def student_params
+    params.require(:student).permit(:name, :grade, :quota, :entry_date)
+  end
+
+  def calculate_partial_payments(student)
+    return [] if student.payments.empty? 
+    total_amount = student.total_payments_amount
+
+    if !student.quota.nil?
+      fees_paid = total_amount.to_f/student.quota 
+    
+      fees_paid - fees_paid.to_i > 0.0 ? [student.fees.last.month] : []
+    end
+  end
+
+  def students_filter_params
+    params.permit(:grade, :commit)
+  end
 end
 
-private
-def student_params
-  params.require(:student).permit(:name, :grade, :quota, :entry_date)
-end
-
-def calculate_partial_payments(student)
-  return [] if student.payments.empty? 
-  total_amount = student.total_payments_amount
-  fees_paid = total_amount.to_f/student.quota
-  
-  fees_paid - fees_paid.to_i > 0.0 ? [student.fees.last.month] : []
-end

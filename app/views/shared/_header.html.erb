@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <%= link_to students_path, class: 'navbar-brand' do %>
+    <%= link_to root_path, class: 'navbar-brand' do %>
       <%= image_tag "https://logosmarcas.net/wp-content/uploads/2020/09/Linux-Simbolo.png", width: 75 %>
       <%= t('app_name') %>
     <% end %>
@@ -8,27 +8,30 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to t('.students_link'), students_path, {class: 'nav-link', aria: {current: 'page'}} %>
-        </li>
-        <li class="nav-item">
-          <%= link_to payments_path, {class: 'nav-link position-relative', aria: {current: 'page'}} do %>
-            <%= t('.payments_link') %>
-            <% if per_verify_payments %>
-              <span class="position-absolute top-50 start-100 translate-middle p-1 bg-secondary border border-light rounded-circle"></span>
+      <% if logged_in? %>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to t('.students_link'), students_path, {class: 'nav-link', aria: {current: 'page'}} %>
+          </li>
+          <li class="nav-item">
+            <%= link_to payments_path, {class: 'nav-link position-relative', aria: {current: 'page'}} do %>
+              <%= t('.payments_link') %>
+              <% if per_verify_payments %>
+                <span class="position-absolute top-50 start-100 translate-middle p-1 bg-secondary border border-light rounded-circle"></span>
+              <% end %>
             <% end %>
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to bills_path, {class: 'nav-link position-relative', aria: {current: 'page'}} do %>
-            <%= t('.bills_link') %>
-            <% if per_generate_bills %>
-              <span class="position-absolute top-50 start-100 translate-middle p-1 bg-secondary border border-light rounded-circle"></span>
+          </li>
+          <li class="nav-item">
+            <%= link_to bills_path, {class: 'nav-link position-relative', aria: {current: 'page'}} do %>
+              <%= t('.bills_link') %>
+              <% if per_generate_bills %>
+                <span class="position-absolute top-50 start-100 translate-middle p-1 bg-secondary border border-light rounded-circle"></span>
+              <% end %>
             <% end %>
-          <% end %>
-        </li>
-      </ul>
+          </li>
+        </ul>
+        <span class="px-4"><%= current_user.username %></span>
+      <% end %>
       <%= link_to t('.login_link'), login_path, class: 'btn btn-success me-2' unless logged_in? %>
       <%= link_to t('.logout_link'), logout_path, class: 'btn btn-danger', data: { turbo_method: :delete, turbo_confirm: t('confirm') } if logged_in? %>
     </div>

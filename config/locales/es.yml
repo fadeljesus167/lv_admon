@@ -1,10 +1,16 @@
 es:
   app_name: LV Admon
-  authentication_error: Necesitas iniciar session primero
+  authentication_error: Necesitas iniciar sesion primero
   confirm: Estas seguro?
   btn_create: Aceptar
   btn_cancel: Cancelar
   btn_update: Actualizar
+  active_record:
+    models:
+      user:
+        biller: Cobranza
+        accountant: Administrativo
+        admin: Super Usuario
 
   common:
     bill_status:
@@ -12,7 +18,9 @@ es:
       completed: Entregada
       canceled: Anulada
 
-
+  layouts:
+    landing:
+      logout_link: Cerrar sesion
   months:
     ins: Inscripcion
     sep: Septiembre
@@ -109,6 +117,8 @@ es:
       rate: Tasa
       payment_support: Soporte de pago
       verified: Verificado
+    get_image:
+      title: "Pago #%{payment_id}"
   
   verifications:
     verification:

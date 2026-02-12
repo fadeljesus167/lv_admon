@@ -12,8 +12,10 @@
             <p class="card-body">
                 <strong><%= t('.grade') %>: </strong> <%= @student.grade %><br>
                 <strong><%= t('.birthday') %>: </strong>1/1/2000<br>
-                <strong><%= t('.entry_date') %>: </strong>1/1/2000<br>
-                <strong><%= t('.quota') %>: </strong> 2$<br>
+                <strong><%= t('.entry_date')%>:</strong> 
+                <%= @student.entry_date.to_s %><br>
+                <strong><%= t('.quota')%>:</strong>
+                <%= @student.quota.to_s %><br>
             </p>
         </article>
     </main>

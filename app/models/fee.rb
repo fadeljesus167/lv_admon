@@ -1,5 +1,5 @@
 class Fee < ApplicationRecord
-  enum month: {
+  enum :month, {
     ins: 0,
     sep: 9,
     oct: 10,

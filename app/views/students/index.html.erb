@@ -1,27 +1,42 @@
-<div class="container d-flex justify-content-between align-items-center py-2">
-    <h1><%= t('.title') %></h1>
-    <span class="btn-group">
-        <%= link_to t('.new_link'), new_student_path, class: 'btn btn-success', data: {turbo_frame: "new_student"} %>
-        <%= link_to t('.import_link'), import_students_path, class: 'btn btn-primary' %>
-    </span>
-</div>
-
-<div class="modal" tabindex="-1" id="studentModal" data-controller="modal" data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <%= turbo_frame_tag "new_student" %>
+<main class="mx-4">
+    <section>
+        <div class="container d-flex justify-content-between align-items-center py-2">
+            <h1><%= t('.title') %></h1>
+            <span class="btn-group">
+                <%= link_to t('.new_link'), new_student_path, class: 'btn btn-success', data: {turbo_frame: "new_student"} %>
+                <%= link_to t('.import_link'), import_students_path, class: 'btn btn-primary' %>
+            </span>
         </div>
-    </div>
-</div>
 
-<table class="table table-hover">
-    <thead>
-        <th><%= t('.header_name') %></th>
-        <th><%= t('.header_grade') %></th>
-        <th><%= t('.header_quota') %></th>
-        <th><%= t('.header_entry_date') %></th>
-    </thead>
-    <tbody>
-        <%= render partial: 'student', collection: @students %>
-    </tbody>
-</table>
+        <div class="modal" tabindex="-1" id="studentModal" data-controller="modal" data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <%= turbo_frame_tag "new_student" %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="row">
+            <%= form_with url: students_path, method: :get, class: 'col-1' do |form| %>
+                <%= form.label :grade %>
+                <%= form.select :grade, options_for_select(Student.grades) %>
+
+                <%= form.submit "Filtrar" %>
+            <% end %>
+
+            <table class="col table table-hover">
+                <thead>
+                    <th><%= t('.header_name') %></th>
+                    <th><%= t('.header_grade') %></th>
+                    <th><%= t('.header_quota') %></th>
+                    <th><%= t('.header_entry_date') %></th>
+                </thead>
+                <tbody>
+                    <%= render partial: 'student', collection: @students %>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>

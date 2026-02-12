@@ -1,6 +1,23 @@
 <div class="container d-flex justify-content-between align-items-center py-2">
   <h1><%= t('.title') %></h1>
 </div>
+
+<div class="modal" tabindex="-1" id="billModal" data-controller="modal" data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= turbo_frame_tag "new_bill" %>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" id="imageModal" data-controller="modal" data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= turbo_frame_tag "image_modal" %>
+    </div>
+  </div>
+</div>
+
 <table class="table table-hover">
   <thead>
       <th><%= t('.date') %></th>
@@ -9,6 +26,7 @@
       <th><%= t('.receiving_bank') %></th>
       <th><%= t('.amount') %></th>
       <th><%= t('.payment_support') %></th>
+      <th><%= t('.verified') %></th>
   </thead>
   <tbody id="payments_table">
       <%= render partial: 'payment', collection: @payments %>
