@@ -19,12 +19,21 @@
 
     <section class="container">
         <div class="row">
-            <%= form_with url: students_path, method: :get, class: 'col-1' do |form| %>
-                <%= form.label :grade %>
-                <%= form.select :grade, options_for_select(Student.grades) %>
+            <div class="col-3">
+                <%= form_with url: students_path, method: :get do |form| %>
+                    <div>
+                        <%= form.label :grade %>
+                        <%= form.select :grade, options_for_select(Student.grades) %>
+                    </div>
 
-                <%= form.submit "Filtrar" %>
-            <% end %>
+                    <div>
+                        <%= form.label :query_text %>
+                        <%= form.text_field :query_text %>
+                    </div>
+
+                    <%= form.submit "Filtrar" %>
+                <% end %>
+            </div>
 
             <table class="col table table-hover">
                 <thead>

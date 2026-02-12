@@ -82,7 +82,7 @@ class StudentsController < ApplicationController
   end
 
   def students_filter_params
-    params.permit(:grade, :commit)
+    params.permit(:grade, :commit, :query_text)
   end
 end
 
